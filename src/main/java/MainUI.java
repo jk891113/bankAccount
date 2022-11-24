@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainUI {
@@ -20,6 +22,47 @@ public class MainUI {
         System.out.println("------------------------------");
         System.out.println("      계좌 정보를 입력하세요");
         System.out.println("------------------------------");
-        mainProcess.createProcess();
+    }
+
+    public void manageAccount() {
+        System.out.println("------------------------------");
+        System.out.println("         1. 계좌 수정");
+        System.out.println("         2. 계좌 삭제");
+        System.out.println("------------------------------");
+        System.out.print("번호 입력 : ");
+        int chooseMenu = scanner.nextInt();
+        System.out.println();
+        if (chooseMenu == 1) {
+            System.out.println("------------------------------");
+            System.out.println("       계좌번호를 입력하세요.");
+            System.out.println("------------------------------");
+            mainProcess.editProcess();
+//            break;
+        } else if (chooseMenu == 2) {
+            System.out.println("------------------------------");
+            System.out.println("       계좌번호를 입력하세요.");
+            System.out.println("------------------------------");
+        }
+    }
+
+    public void checkAccount() {
+        System.out.println("------------------------------");
+        System.out.println("       1. 계좌번호로 조회");
+        System.out.println("       2. 이름으로 조회");
+        System.out.println("       3. 거래내역 조회");
+        System.out.println("------------------------------");
+    }
+
+    public void checkAmount() {
+        System.out.println("------------------------------");
+        System.out.println("       계좌번호를 입력하세요.");
+        System.out.println("------------------------------");
+    }
+
+    public void depositWithdrawal() {
+        System.out.println("------------------------------");
+        System.out.println("           1. 입금");
+        System.out.println("           2. 출금");
+        System.out.println("------------------------------");
     }
 }

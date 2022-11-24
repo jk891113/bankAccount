@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
+        MainProcess mainProcess = new MainProcess();
 
         Scanner scanner = new Scanner(System.in);
 
@@ -12,13 +13,18 @@ public class Main {
             int chooseMain = scanner.nextInt();
             if (chooseMain == 1) {
                 mainUI.createAccount();
+                mainProcess.createProcess();
             } else if (chooseMain == 2) {
+                mainUI.manageAccount();
 
             } else if (chooseMain == 3) {
+                mainUI.checkAccount();
 
             } else if (chooseMain == 4) {
+                mainUI.checkAmount();
 
             } else if (chooseMain == 5) {
+                mainUI.depositWithdrawal();
 
             } else if (chooseMain == 0) {
                 System.out.println("프로그램을 종료합니다.");

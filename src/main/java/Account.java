@@ -56,9 +56,6 @@ public class Account {
     public String getDate() {
         return date;
     }
-
-
-
 }
 
 

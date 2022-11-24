@@ -12,8 +12,9 @@ public class AccountList {
     Scanner bankNameScanner = new Scanner(System.in);
     Scanner accountNumScanner = new Scanner(System.in);
     Scanner passwordScanner = new Scanner(System.in);
-    List<Account> accountList = new ArrayList<>();
+    private List<Account> accountList = new ArrayList<>();
 
+    // 계좌생성 메소드
     public void makeAccount() {
 
         System.out.print("이름 : ");
@@ -58,8 +59,6 @@ public class AccountList {
         Account account = new Account(name, bankName, accountNum, password, amount, date);
 
 //        int num = accountList.size() + 1;
-        accountList.add(account);
-
 
         for (Account acc : accountList) {
             System.out.println(acc.getName() + ", " + acc.getBankName() + ", " + acc.getAccountNum() + ", " + acc.getDate());
@@ -67,6 +66,7 @@ public class AccountList {
     }
 
     public void addAccount(Account account) {
-
+        accountList.add(account);
+        System.out.println(accountList);
     }
 }

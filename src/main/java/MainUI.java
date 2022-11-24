@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class MainUI {
     MainProcess mainProcess = new MainProcess();
-
     Scanner scanner = new Scanner(System.in);
 
     public void run() {
@@ -47,18 +46,53 @@ public class MainUI {
     }
 
     public void checkAccount() {
+
+
         System.out.println("------------------------------");
         System.out.println("       1. 계좌번호로 조회");
-        System.out.println("       2. 이름으로 조회");
-        System.out.println("       3. 거래내역 조회");
-        System.out.println("       4. 계좌 목록 조회");
+        System.out.println("       2. 소유자명으로 조회");
+        System.out.println("       3. 계좌목록 조회");
+        System.out.println("       4. 거래내역 조회");
         System.out.println("------------------------------");
-    }
+        int chooseLookup = scanner.nextInt();
+        switch (chooseLookup) {
+            case 1:
+                System.out.println("------------------------------");
+                System.out.println("         계좌번호 입력");
+                System.out.println("------------------------------");
+                mainProcess.checkByAccountNumProcess();
+                System.out.println("------------------------------");
+                mainProcess.getAccountNumProcess();
+                System.out.println("------------------------------");
+                break;
+            case 2:
+                System.out.println("------------------------------");
+                System.out.println("          소유자명 입력");
+                System.out.println("------------------------------");
+                mainProcess.checkByNameProcess();
+                System.out.println("------------------------------");
+                mainProcess.getcheckByNameProcess();
+                System.out.println("------------------------------");
+                break;
+            case 3:
+                System.out.println("------------------------------");
+                System.out.println("           계좌목록");
+                System.out.println("------------------------------");
 
-    public void checkAmount() {
-        System.out.println("------------------------------");
-        System.out.println("       계좌번호를 입력하세요.");
-        System.out.println("------------------------------");
+                mainProcess.getAccountListProcess();
+                System.out.println("------------------------------");
+                break;
+            case 4:
+                System.out.println("------------------------------");
+                System.out.println("           거래내역");
+                System.out.println("------------------------------");
+
+                mainProcess.getHistoryProcess();
+                System.out.println("------------------------------");
+                break;
+            default:
+                System.out.println("목록에 해당하는 숫자를 눌러주세요.");
+        }
     }
 
     public void depositWithdrawal() {

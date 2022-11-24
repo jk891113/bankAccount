@@ -59,6 +59,14 @@ public class MainProcess {
 
         accountList.showAllAccount();
 
+        System.out.println("------------------------------");
+        System.out.println("     이름 : " + account.getName());
+        System.out.println("     은행명 : " + account.getBankName());
+        System.out.println("     계좌번호 : " + account.getAccountNum());
+        System.out.println("     잔고 : " + account.getAmount());
+        System.out.println("------------------------------");
+        System.out.println(date + "에 생성이 완료 되었습니다.");
+
 //        for (Account acc : accountList) {
 //            System.out.println(acc.getName() + ", " + acc.getBankName() + ", " + acc.getAccountNum() + ", " + acc.getDate());
 //        }

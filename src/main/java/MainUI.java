@@ -22,6 +22,7 @@ public class MainUI {
         System.out.println("------------------------------");
         System.out.println("      계좌 정보를 입력하세요");
         System.out.println("------------------------------");
+        mainProcess.createProcess();
     }
 
     public void manageAccount() {
@@ -50,6 +51,7 @@ public class MainUI {
         System.out.println("       1. 계좌번호로 조회");
         System.out.println("       2. 이름으로 조회");
         System.out.println("       3. 거래내역 조회");
+        System.out.println("       4. 계좌 목록 조회");
         System.out.println("------------------------------");
     }
 

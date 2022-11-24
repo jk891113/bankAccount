@@ -13,7 +13,7 @@ public class Main {
             int chooseMain = scanner.nextInt();
             if (chooseMain == 1) {
                 mainUI.createAccount();
-                mainProcess.createProcess();
+
             } else if (chooseMain == 2) {
                 mainUI.manageAccount();
 

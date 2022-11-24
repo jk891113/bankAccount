@@ -1,5 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -70,5 +72,58 @@ public class MainProcess {
     public void editProcess() {
 
     }
+
+
+
+    public void checkByAccountNumProcess() {
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
+            if (checkNum) {
+                break;
+            } else {
+                System.out.println("***계좌번호 형식이 올바르지 않습니다.***");
+                continue;
+            }
+        }
+    }
+    public void getAccountNumProcess() {
+        AccountList accountList = new AccountList();
+        System.out.println(accountList);
+//        final HashMap accountItemList = new HashMap();
+//        int account = scanner.nextInt();
+//        List accountData = (List) accountItemList.get(account);
+//        System.out.println("이름 : " + accountData.get(2));
+//        System.out.println("은행명 : " + accountData.get(4));
+//        System.out.println("계좌번호 : " + accountData.get(3));
+//        System.out.println("잔고 : " + accountData.get(1));
+//        System.out.println("등록일자 : " + accountData.get(5));
+//
+//        System.out.println(accountItemList);
+    }
+
+    public void checkByNameProcess() {
+        System.out.print("소유자명 : ");
+        String name = scanner.nextLine();
+    }
+    public void getcheckByNameProcess() {
+
+    }
+
+
+    public void getAccountListProcess() {
+
+    }
+
+
+    public void getHistoryProcess() {
+
+    }
+
+
+
+
+
 }
 

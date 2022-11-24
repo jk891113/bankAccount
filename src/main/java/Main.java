@@ -3,15 +3,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
-        mainUI.run();
 
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
             mainUI.run();
+            System.out.print("번호 입력 : ");
             int chooseMain = scanner.nextInt();
             if (chooseMain == 1) {
-
+                mainUI.createAccount();
             } else if (chooseMain == 2) {
 
             } else if (chooseMain == 3) {

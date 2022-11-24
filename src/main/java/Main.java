@@ -23,6 +23,9 @@ public class Main {
             } else if (chooseMain == 0) {
                 System.out.println("프로그램을 종료합니다.");
                 System.exit(0);
+            } else {
+                System.out.println("잘못된 명령어입니다.");
+                continue;
             }
         }
     }

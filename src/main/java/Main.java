@@ -20,14 +20,6 @@ public class Main {
 
             } else if (chooseMain == 5) {
 
-            } else if (chooseMain == 6) {
-
-            } else if (chooseMain == 7) {
-
-            } else if (chooseMain == 8) {
-
-            } else if (chooseMain == 9) {
-
             } else if (chooseMain == 0) {
                 System.out.println("프로그램을 종료합니다.");
                 System.exit(0);

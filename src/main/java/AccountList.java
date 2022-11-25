@@ -5,6 +5,7 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
+    List<Account> accountList = new ArrayList<>();
 
     // 계좌정보 리스트 생성
     public void addAccount(Account account) {
@@ -30,37 +31,41 @@ public class AccountList {
         boolean bfindCheck = false;
 
         //리스트 돌면서 계좌번호 , 비밀번호 일치하는 계좌 검사
+
         for (Account acc : accountList) {
             if (accountNum.equals(acc.getAccountNum()) && password.equals(acc.getPassword())) {
-                //계좌번호, 비밀번호 일치지 수정할 부분들은 대체하고 , (계좌번호,잔고)는 계속유지
-                //값 입력
-                replaceName = name; //변경값 적용
-                replaceBankName = bankname;//변경값 적용
-                replaceAccountNum = acc.getAccountNum(); //계좌번호는 변경안함
-                replacePassword = newPassword;//변경값 적용
 
-                //수정시간 업데이트
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-                String date = dateTimeFormatter.format(LocalDateTime.now());
-                replaceDate = date;
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountNum.equals(accountList.get(i).accountNum) && password.equals(accountList.get(i).password)) {
+                        //계좌번호, 비밀번호 일치지 수정할 부분들은 대체하고 , (계좌번호,잔고)는 계속유지
+                        //값 입력
+                        replaceName = name; //변경값 적용
+                        replaceBankName = bankname;//변경값 적용
+                        replaceAccountNum = accountList.get(i).accountNum; //계좌번호는 변경안함
+                        replacePassword = newPassword;//변경값 적용
 
-                //수정내용 Account리스트로 구성
-                Account replaceAccount = new Account(replaceName, replaceBankName, replaceAccountNum, replacePassword, acc.getAmount(), replaceDate);
+                        //수정시간 업데이트
+                        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+                        String date = dateTimeFormatter.format(LocalDateTime.now());
+                        replaceDate = date;
 
-//                삭제후 재생성... 이부분근데 좀 불안하다.
-                accountList.remove(acc); //
-                accountList.add(replaceAccount);
+                        //수정내용 Account리스트로 구성
+                        Account replaceAccount = new Account(replaceName, replaceBankName, replaceAccountNum, replacePassword, accountList.get(i).amount, replaceDate);
 
-                System.out.print(replaceAccount.getAccountNum() + " : 계좌를 수정합니다.");
-                bfindCheck = true;
-                return;
+                        accountList.set(i, replaceAccount);
+
+                        System.out.print(replaceAccount.getAccountNum() + " : 계좌를 수정합니다.");
+                        bfindCheck = true;
+                        return;
+                    }
+                }
+                if (bfindCheck == false) {
+                    System.out.println("계좌를 찾지못했습니다.");
+                    return;
+                }
+
             }
         }
-        if (bfindCheck == false) {
-            System.out.println("계좌를 찾지못했습니다.");
-            return;
-        }
-
     }
 
     public boolean delectAccount(String accountNum, String passWord) {
@@ -69,10 +74,18 @@ public class AccountList {
             if (accountNum.equals(acc.getAccountNum()) && passWord.equals(acc.getPassword())) {
                 System.out.print(acc.getAccountNum() + " : 계좌를 삭제합니다.");
                 accountList.remove(acc); //
-                return true;
+
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountNum.equals(accountList.get(i).accountNum) && passWord.equals(accountList.get(i).password)) {
+                        System.out.print(accountList.get(i).accountNum + " : 계좌를 삭제합니다.");
+                        System.out.println(i);
+                        accountList.remove(accountList.remove(i)); //
+                        return true;
+                    }
+                }
+                return false;
             }
         }
-        return false;
     }
 
     public boolean getAccountNum(String accountNum) {
@@ -121,10 +134,10 @@ public class AccountList {
             System.out.println("------------------------------");
             System.out.println("  계좌번호 : " + account.getAccountNum());
             System.out.println("  은행명 : " + account.getBankName());
-            System.out.println("  거래일자 : " );
-            System.out.println("  거래시간 : " );
-            System.out.println("  입금금액 : " );
-            System.out.println("  출금금액: " );
+            System.out.println("  거래일자 : ");
+            System.out.println("  거래시간 : ");
+            System.out.println("  입금금액 : ");
+            System.out.println("  출금금액: ");
             System.out.println("------------------------------");
         }
     }

@@ -1,10 +1,10 @@
 public class Account {
-    private String name;
-    private String bankName;
-    private String accountNum;
-    private String password;
-    private int amount;
-    private String date;
+    String name;
+    String bankName;
+    String accountNum;
+    String password;
+    int amount;
+    String date;
 
     public Account(String name, String bankName, String accountNum, String password, int amount, String date) {
         this.name = name;

@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
+    Account account;
 
     public void createProcess() {
         // 이름 입력
@@ -250,7 +251,7 @@ public class MainProcess {
         }
     }
 
-    public void withdrawalProcess(Account account) {
+    public void withdrawalProcess() {
         int index;
         while (true) {
             System.out.print("계좌번호 : ");

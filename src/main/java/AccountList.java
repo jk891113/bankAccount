@@ -5,7 +5,9 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
+    TransInfoList transInfoList = new TransInfoList();
     TransInfo transInfo;
+
     // 계좌정보 리스트 생성
 
     public void addAccount(String name, String bankName, String accountName, String password, int amount, String date) {
@@ -204,7 +206,8 @@ public class AccountList {
 
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
                 String date = dateTimeFormatter.format(LocalDateTime.now());
-                transInfo.setTransDate(date);
+                String depositWithdrawal = "Deposit";
+                transInfoList.addTransInfoList(index, date, depositWithdrawal, money, account.amount);
 
                 System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + account.amount + "원 입니다.");
             }
@@ -218,7 +221,8 @@ public class AccountList {
 
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
                 String date = dateTimeFormatter.format(LocalDateTime.now());
-                transInfo.setTransDate(date);
+                String depositWithdrawal = "Withdrawal";
+                transInfoList.addTransInfoList(index, date, depositWithdrawal, money, account.amount);
 
                 System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + account.amount + "원 입니다.");
             }

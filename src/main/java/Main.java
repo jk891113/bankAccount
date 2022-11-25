@@ -19,8 +19,7 @@ public class Main {
 
             } else if (chooseMain == 3) {
                 mainUI.checkAccount();
-
-//                mainProcess.showAllprocess();
+                mainProcess.showAllProcess();
 
             } else if (chooseMain == 4) {
                 mainUI.checkAmount();

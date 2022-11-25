@@ -177,7 +177,7 @@ public class MainProcess {
         System.out.print("소유자명 : ");
         String name = scanner.nextLine();
         while (true) {
-            if (accountList.getCheckByName(name))) {
+            if (accountList.getCheckByName(name)) {
                 break;
             } else {
                 System.out.println("존재하는 소유자명이 없습니다.");

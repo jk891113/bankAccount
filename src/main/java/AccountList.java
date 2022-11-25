@@ -5,7 +5,9 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
+
     int accountListIndex;
+
 
     // 계좌정보 리스트 생성
     public void addAccount(String name, String bankName, String accountName, String password, int amount, String date) {
@@ -98,17 +100,24 @@ public class AccountList {
 
     public boolean delectAccount(String accountNum , String passWord){
         //가진 리스트를 전부 검사하면서 일치하는 리스트 찾음
-        for (int i =0 ; i<accountList.size(); i++) {
-            if (accountNum.equals(accountList.get(i).accountNum) && passWord.equals(accountList.get(i).password))
-            {
-                System.out.print(accountList.get(i).accountNum +" : 계좌를 삭제합니다.");
-                System.out.println(i);
-                accountList.remove(accountList.remove(i)); //
-                return true;
+        for (Account acc : accountList) {
+            if (accountNum.equals(acc.getAccountNum()) && passWord.equals(acc.getPassword())) {
+                System.out.print(acc.getAccountNum() + " : 계좌를 삭제합니다.");
+                accountList.remove(acc); //
+
+                for (int i = 0; i < accountList.size(); i++) {
+                    if (accountNum.equals(accountList.get(i).accountNum) && passWord.equals(accountList.get(i).password)) {
+                        System.out.print(accountList.get(i).accountNum + " : 계좌를 삭제합니다.");
+                        System.out.println(i);
+                        accountList.remove(accountList.remove(i)); //
+                        return true;
+                    }
+                }
             }
         }
         return false;
     }
+
 
     public int passwordCorrection(int index, String password) {
         if(password.equals(accountList.get(index).getPassword())) {
@@ -120,4 +129,60 @@ public class AccountList {
     public void getAmount(int index) {
         System.out.println("잔고 : " + accountList.get(index).getAmount());
     }
+
+
+    public boolean getAccountNum(String accountNum) {
+        for (Account account : accountList) {
+            if (accountNum.equals(account.getAccountNum())) {
+                System.out.println("------------------------------");
+                System.out.println("  소유자명 : " + account.getName());
+                System.out.println("  계좌번호 : " + account.getAccountNum());
+                System.out.println("  잔고 : " + account.getAmount());
+                System.out.println("------------------------------");
+            }
+        }
+        return true;
+    }
+
+    public boolean getCheckByName(String name) {
+        for (Account account : accountList) {
+            if (name.equals(account.getName())) {
+                System.out.println("------------------------------");
+                System.out.println("  은행명 : " + account.getBankName());
+                System.out.println("  계좌번호 : " + account.getAccountNum());
+                System.out.println("  잔고 : " + account.getAmount());
+                System.out.println("  거래일자 : " + account.getDate());
+                System.out.println("------------------------------");
+            }
+        }
+        return true;
+    }
+
+    public void getAccountList() {
+        for (Account account : accountList) {
+            System.out.println("------------------------------");
+            System.out.println("  소유자명 : " + account.getBankName());
+            System.out.println("  은행명 : " + account.getBankName());
+            System.out.println("  계좌번호 : " + account.getAccountNum());
+            System.out.println("  잔고 : " + account.getAmount());
+            System.out.println("  입금내역 : " + account.getDate());
+            System.out.println("  입출금내역 : " + account.getDate());
+            System.out.println("  거래일자 : " + account.getDate());
+            System.out.println("------------------------------");
+        }
+    }
+
+    public void getHistory() {
+        for (Account account : accountList) {
+            System.out.println("------------------------------");
+            System.out.println("  계좌번호 : " + account.getAccountNum());
+            System.out.println("  은행명 : " + account.getBankName());
+            System.out.println("  거래일자 : ");
+            System.out.println("  거래시간 : ");
+            System.out.println("  입금금액 : ");
+            System.out.println("  출금금액: ");
+            System.out.println("------------------------------");
+        }
+    }
 }
+

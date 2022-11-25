@@ -13,12 +13,21 @@ public class Main {
             int chooseMain = scanner.nextInt();
             if (chooseMain == 1) {
                 mainUI.createAccount();
-
             } else if (chooseMain == 2) {
-                mainUI.manageAccount();
+               mainUI.manageAccount();
+                System.out.print("번호 입력 : ");
+                int chooseMenu = scanner.nextInt();
+                System.out.println();
+                if (chooseMenu == 1) {
+                    mainProcess.editProcess();
+//            break;
+                } else if (chooseMenu == 2) {
+                    mainProcess.deleteProcess();
+                }
 
             } else if (chooseMain == 3) {
-                mainUI.checkAccount();
+//                mainUI.checkAccount();
+                mainProcess.showAllprocess();
 
             } else if (chooseMain == 4) {
 

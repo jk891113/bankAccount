@@ -58,6 +58,10 @@ public class MainProcess {
 
         accountList.addAccount(name, bankName, accountNum, password, Integer.parseInt(amount), date);
 
+
+
+
+
 //        accountList.showAllAccount();
 
 //        System.out.println("------------------------------");
@@ -73,26 +77,22 @@ public class MainProcess {
 //            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
 //            String date = dateTimeFormatter.format(LocalDateTime.now());
 //            //임시로 전부 입력
-//            Account account = new Account("임시1", "임시은행1", "111-1111-1111", "1111", Integer.parseInt("1000"), date);
-//            accountList.addAccount(account);
+//            accountList.addAccount("임시1", "임시은행1", "111-1111-1111", "1111", Integer.parseInt("1000"), date);
 //
 //            dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
 //            date = dateTimeFormatter.format(LocalDateTime.now());
-//            account = new Account("임시2", "임시은행2", "222-2222-2222", "3333", Integer.parseInt("2000"), date);
-//            accountList.addAccount(account);
+//            accountList.addAccount("임시2", "임시은행2", "222-2222-2222", "2222", Integer.parseInt("2000"), date);
 //
 //            dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
 //            date = dateTimeFormatter.format(LocalDateTime.now());
-//            account = new Account("임시3", "임시은행3", "333-3333-3333", "3333", Integer.parseInt("3000"), date);
-//            accountList.addAccount(account);
+//            accountList.addAccount("임시3", "임시은행3", "333-3333-3333", "3333", Integer.parseInt("3000"), date);
 //
 //            dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
 //            date = dateTimeFormatter.format(LocalDateTime.now());
-//            account = new Account("임시4", "임시은행4", "444-4444-4444", "4444", Integer.parseInt("4000"), date);
-//            accountList.addAccount(account);
+//            accountList.addAccount("임시4", "임시은행4", "444-4444-4444", "4444", Integer.parseInt("4000"), date);
 
 
-            accountList.showAllAccount();
+//            accountList.showAllAccount();
 
 
 
@@ -107,8 +107,8 @@ public class MainProcess {
     public void editProcess() {
         System.out.print("계좌번호 : ");
         String accountNum = scanner.nextLine();
-//        accountList.getAccountByAccountNum(accountNum);
-//        System.out.println(accountList.getAccountByAccountNum(accountNum));
+        //계좌번호로 index번호 찾기
+        int index  = accountList.getIndexByAccountNum(accountNum);
 
         System.out.print("비밀번호 : ");
         String password = scanner.nextLine();
@@ -121,9 +121,11 @@ public class MainProcess {
         System.out.print("수정 비밀번호: ");
         String replacepassword = scanner.nextLine();
 
-//        accountList.updateAccount(accountNum,password,replacename,replacebankname,replacepassword);
+        if ((accountList.passwordCorrection(index,password)==1)) {
+            accountList.updateAccount(index, replacename, replacebankname, replacepassword);
+            return;
+        }
     }
-
 
     public void checkByAccountNumProcess() {
         while (true) {
@@ -157,17 +159,28 @@ public class MainProcess {
     {
         System.out.print("계좌번호 : ");
         String accountNum = scanner.nextLine();
-
-        System.out.print("비밀번호 : ");
-        String password = scanner.nextLine();
-        //계좌번호 삭제
-        if (!(accountList.delectAccount(accountNum,password)))
+        //계좌번호를 이용해서 리스트 index찾기
+        int index  = accountList.getIndexByAccountNum(accountNum);
+        if(index ==-1)
         {
-            //계좌번호나 비밀번호가 틀리다면 알림
-            System.out.println("계좌를 찾지못했습니다.");
+            System.out.println("존재하지않는 계좌번호입니다.");
             return;
         }
-        return;
+        
+        System.out.print("비밀번호 : ");
+        String password = scanner.nextLine();
+        //비밀번호 확인
+        if ((accountList.passwordCorrection(index,password)==1))
+        {
+           if(!accountList.delectAccount(index))
+           {
+               System.out.println("계좌 미처리 ");
+               return;
+           }
+        }
+        else {
+            System.out.println("비밀번호가 틀렸습니다.");
+        }
     }
 
 

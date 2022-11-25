@@ -29,11 +29,18 @@ public class MainUI {
         System.out.println("         1. 계좌 수정");
         System.out.println("         2. 계좌 삭제");
         System.out.println("------------------------------");
+        System.out.print("번호 입력 : ");
+        int chooseMenu = scanner.nextInt();
+        System.out.println();
+        if (chooseMenu == 1) {
+            mainProcess.editProcess();
+//            break;
+        } else if (chooseMenu == 2) {
+            mainProcess.deleteProcess();
+        }
     }
 
     public void checkAccount() {
-
-
         System.out.println("------------------------------");
         System.out.println("       1. 계좌번호로 조회");
         System.out.println("       2. 소유자명으로 조회");

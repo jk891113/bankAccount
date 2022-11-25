@@ -15,19 +15,10 @@ public class Main {
                 mainUI.createAccount();
             } else if (chooseMain == 2) {
                mainUI.manageAccount();
-                System.out.print("번호 입력 : ");
-                int chooseMenu = scanner.nextInt();
-                System.out.println();
-                if (chooseMenu == 1) {
-                    mainProcess.editProcess();
-//            break;
-                } else if (chooseMenu == 2) {
-                    mainProcess.deleteProcess();
-                }
+
 
             } else if (chooseMain == 3) {
-//                mainUI.checkAccount();
-                mainProcess.showAllprocess();
+                mainUI.checkAccount();
 
             } else if (chooseMain == 4) {
 

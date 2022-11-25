@@ -8,5 +8,7 @@ public class TransInfoList {
         transInfoList.add(transInfo);
     }
 
-    public void getTransInfoList
+    public void getTransInfoList() {
+
+    }
 }

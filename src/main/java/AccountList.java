@@ -5,6 +5,8 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
+    int accountListIndex = -1;
+
     // 계좌정보 리스트 생성
     public void addAccount(Account account) {
         accountList.add(account);
@@ -19,20 +21,28 @@ public class AccountList {
             System.out.println("계좌번호 : " + accountItem.getAccountNum());
             System.out.println("잔고 : " + accountItem.getAmount());
         }
-//        for (int i = 0; i < accountList.size(); i++) {
-//            System.out.println(accountList.get(i));
-//        }
     }
 
-    public void getAccount() {
-
-    }
-
-    public void updateAccount() {
-
-        for (Account acc : accountList) {
-            System.out.println(acc.getName() + ", " + acc.getBankName() + ", " + acc.getAccountNum() + ", " + acc.getDate());
+    public int getAccountByAccountNum(String accountNum) {
+        for (int i = 0; i < accountList.size(); i++) {
+            if (accountList.get(i).getAccountNum().equals(accountNum)) {
+                accountListIndex = i;
+            } else {
+                continue;
+            }
         }
+        return -1;
+    }
+
+    public int getAccountByName(String name) {
+        for (int i = 0; i < accountList.size(); i++) {
+            if (accountList.get(i).getAccountNum().equals(name)) {
+                accountListIndex = i;
+            } else {
+                continue;
+            }
+        }
+        return -1;
     }
 
     public void updateAccount(String accountNum,String password,String name,String bankname,String newPassword) {

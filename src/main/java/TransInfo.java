@@ -24,4 +24,73 @@ public class TransInfo {
         this.money = money;
         this.amount = amount;
     }
+
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    public int getIndex() {
+        return index;
+    }
+
+    public void setTransIndex(int transIndex) {
+        this.transIndex = transIndex;
+    }
+    public int getTransIndex() {
+        return transIndex;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
+
+    public void setBankName(String bankName) {
+        this.name = bankName;
+    }
+    public String getBankName() {
+        return bankName;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    public String getPassword() {
+        return password;
+    }
+    public void setAccountNum(String accountNum) {
+        this.accountNum = accountNum;
+    }
+    public String getAccountNum() {
+        return accountNum;
+    }
+    public void setDate(String date) {
+        this.transDate = date;
+    }
+    public String getDate() {
+        return transDate;
+    }
+    public void setDepositWithdrawal(String depositWithdrawal) {
+        this.depositWithdrawal = depositWithdrawal;
+    }
+    public String getDepositWithdrawal() {
+        return depositWithdrawal;
+    }
+
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+    public int getMoney() {
+        return money;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+    public int getAmount() {
+        return amount;
+    }
+
+
 }

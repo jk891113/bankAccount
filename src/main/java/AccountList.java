@@ -131,9 +131,10 @@ public class AccountList {
                 System.out.println("  계좌번호 : " + account.getAccountNum());
                 System.out.println("  잔고 : " + account.getAmount());
                 System.out.println("------------------------------");
+                break;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean getCheckByName(String name) {
@@ -145,9 +146,10 @@ public class AccountList {
                 System.out.println("  잔고 : " + account.getAmount());
                 System.out.println("  거래일자 : " + account.getDate());
                 System.out.println("------------------------------");
+                break;
             }
         }
-        return true;
+        return false;
     }
 
     public void getAccountList() {

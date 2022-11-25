@@ -1,6 +1,7 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -106,10 +107,10 @@ public class MainProcess {
 
     public void editProcess() {
         int index;
+        // 계좌번호 입력 후 AccountList에서 입력한 계좌번호의 계좌정보 리스트의 인덱스를 받는다.
         while (true) {
             System.out.print("계좌번호 : ");
             String accountNum = scanner.nextLine();
-            //계좌번호로 index번호 찾기
             index = accountList.getIndexByAccountNum(accountNum);
             if (index == -1) {
                 System.out.println("계좌번호를 찾을 수 없습니다.");
@@ -118,6 +119,7 @@ public class MainProcess {
                 break;
             }
         }
+        // 위에서 받은 인덱스로 해당 인덱스 값의 비밀번호가 입력한 비밀번호와 일치하면 수정 페이지를 출력.
         while (true) {
             System.out.print("비밀번호 : ");
             String password = scanner.nextLine();
@@ -151,10 +153,10 @@ public class MainProcess {
         int index  = accountList.getIndexByAccountNum(accountNum);
         if(index ==-1)
         {
-            System.out.println("존재하지않는 계좌번호입니다.");
+            System.out.println("존재하지 않는 계좌번호입니다.");
             return;
         }
-        
+
         System.out.print("비밀번호 : ");
         String password = scanner.nextLine();
         //비밀번호 확인
@@ -176,28 +178,30 @@ public class MainProcess {
     }
 
     public void checkByAccountNumProcess() {
+        int index;
         while (true) {
             System.out.print("계좌번호 : ");
             String accountNum = scanner.nextLine();
-            boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
-            if (checkNum == accountList.getAccountNum(accountNum)) {
-                break;
-            } else if (!(accountNum.equals(checkNum))) {
-                System.out.println("존재하는 계좌번호가 없습니다.");
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
             } else {
-                System.out.println("계좌번호가 일치하지 않습니다.");
+                accountList.getAccount(index);
+                break;
             }
         }
     }
 
     public void checkByNameProcess() {
+        int index;
         while (true) {
             System.out.print("소유자명 : ");
             String name = scanner.nextLine();
-            if (accountList.getCheckByName(name)) {
-                break;
-            } else {
+            index = accountList.getIndexByName(name);
+            if (index == -1) {
                 System.out.println("존재하는 소유자명이 없습니다.");
+            } else {
+                accountList.getAccount(index);
             }
         }
     }
@@ -210,8 +214,7 @@ public class MainProcess {
         accountList.getHistory();
     }
 
-
-    public void getAmountProcess() {
+    public void depositProcess() {
         int index;
         while (true) {
             System.out.print("계좌번호 : ");
@@ -226,6 +229,80 @@ public class MainProcess {
             }
         }
 
+        while (true) {
+            System.out.print("비밀번호 : ");
+            String password = scanner.nextLine();
+            System.out.println();
+            int exact = accountList.passwordCorrection(index, password);
+            if (exact == 1) {
+                System.out.println("입금할 금액을 입력하세요");
+                System.out.print("금액 : ");
+                int money = scanner.nextInt();
+                if (money >= 0) {
+                    accountList.deposit(index, money);
+                    break;
+                } else {
+                    System.out.println("잘못된 요청입니다.");
+                }
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+        }
+    }
+
+    public void withdrawalProcess(Account account) {
+        int index;
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            System.out.println();
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
+            } else {
+                accountList.getAccount(index);
+                break;
+            }
+        }
+
+        while (true) {
+            System.out.print("비밀번호 : ");
+            String password = scanner.nextLine();
+            System.out.println();
+            int exact = accountList.passwordCorrection(index, password);
+            if (exact == 1) {
+                System.out.println("입금할 금액을 입력하세요");
+                System.out.print("금액 : ");
+                int money = scanner.nextInt();
+                if (money >= 0 && money > account.getAmount()) {
+                    accountList.withdrawal(index, money);
+                    break;
+                } else {
+                    System.out.println("잘못된 요청입니다.");
+                }
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+        }
+    }
+
+
+    public void getAmountProcess() {
+        int index;
+        // 계좌번호 입력 후 AccountList에서 입력한 계좌번호의 계좌정보 리스트의 인덱스를 받는다.
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            System.out.println();
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
+            } else {
+                accountList.getAccount(index);
+                break;
+            }
+        }
+        // 위에서 받은 인덱스로 해당 인덱스 값의 비밀번호가 입력한 비밀번호와 일치하면 잔고를 반환
         while (true) {
             System.out.print("비밀번호 : ");
             String password = scanner.nextLine();

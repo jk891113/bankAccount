@@ -5,6 +5,7 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
+    TransInfo transInfo;
     // 계좌정보 리스트 생성
 
     public void addAccount(String name, String bankName, String accountName, String password, int amount, String date) {
@@ -42,23 +43,27 @@ public class AccountList {
     }
 
     public void getAccount(int accountListIndex) {
+        System.out.println("------------------------------");
         System.out.println("이름 : " + accountList.get(accountListIndex).getName());
         System.out.println("은행명 : " + accountList.get(accountListIndex).getBankName());
         System.out.println("계좌번호 : " + accountList.get(accountListIndex).getAccountNum());
+        System.out.println("------------------------------");
     }
 
     public void editAccountList(int index, String replaceName, String replaceBankName, String replacePassword) {
         for (Account account : this.accountList) {
-            if (index == account.getIndex())
+            if (index == account.getIndex()) {
             account.setName(replaceName);
             account.setBankName(replaceBankName);
             account.setPassword(replacePassword);
-
-            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-            String date = dateTimeFormatter.format(LocalDateTime.now());
-            account.setDate(date);
             System.out.println(account.getAccountNum() + "의 계좌를 수정합니다.");
+            break;
+            }
         }
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+        String date = dateTimeFormatter.format(LocalDateTime.now());
+
+        System.out.println(date + "에 수정됨.");
     }
 
 //    public void updateAccount(int index, String newName,String newBankname,String newPassword) {
@@ -192,5 +197,32 @@ public class AccountList {
         }
     }
 
+    public void deposit(int index, int money) {
+        for (Account account: this.accountList) {
+            if (index == account.getIndex()) {
+                account.setAmount((account.getAmount() + money));
+
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+                String date = dateTimeFormatter.format(LocalDateTime.now());
+                transInfo.setTransDate(date);
+
+                System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + account.amount + "원 입니다.");
+            }
+        }
+    }
+
+    public void withdrawal(int index, int money) {
+        for (Account account: this.accountList) {
+            if (index == account.getIndex()) {
+                account.setAmount((account.getAmount() - money));
+
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+                String date = dateTimeFormatter.format(LocalDateTime.now());
+                transInfo.setTransDate(date);
+
+                System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + account.amount + "원 입니다.");
+            }
+        }
+    }
 }
 

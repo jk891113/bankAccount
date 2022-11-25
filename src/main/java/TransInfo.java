@@ -11,15 +11,14 @@ public class TransInfo {
     int money;
     int amount;
 
-
-    public TransInfo(int index, int transIndex, String name, String bankName, String password, String accountNum, String date, String depositWithdrawal, int money, int amount) {
+    public TransInfo(int index, int transIndex, String name, String bankName, String password, String accountNum, String transDate, String depositWithdrawal, int money, int amount) {
         this.index = index;
         this.transIndex = transIndex;
         this.name = name;
         this.bankName = bankName;
         this.password = password;
         this.accountNum = accountNum;
-        this.transDate = date;
+        this.transDate = transDate;
         this.depositWithdrawal = depositWithdrawal;
         this.money = money;
         this.amount = amount;
@@ -64,10 +63,10 @@ public class TransInfo {
     public String getAccountNum() {
         return accountNum;
     }
-    public void setDate(String date) {
+    public void setTransDate(String date) {
         this.transDate = date;
     }
-    public String getDate() {
+    public String getTransDate() {
         return transDate;
     }
     public void setDepositWithdrawal(String depositWithdrawal) {

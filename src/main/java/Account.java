@@ -1,4 +1,5 @@
 public class Account {
+    int index;
     String name;
     String bankName;
     String accountNum;
@@ -6,7 +7,8 @@ public class Account {
     int amount;
     String date;
 
-    public Account(String name, String bankName, String accountNum, String password, int amount, String date) {
+    public Account(int index, String name, String bankName, String accountNum, String password, int amount, String date) {
+        this.index = index;
         this.name = name;
         this.bankName = bankName;
         this.accountNum = accountNum;
@@ -15,6 +17,12 @@ public class Account {
         this.date = date;
     }
 
+    public void setIndex(int index) {
+        this.index = index;
+    }
+    public int getIndex() {
+        return index;
+    }
     public void setName(String name) {
         this.name = name;
     }

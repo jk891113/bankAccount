@@ -94,4 +94,11 @@ public class MainUI {
         System.out.println("           2. 출금");
         System.out.println("------------------------------");
     }
+
+    public void checkAmount() {
+        System.out.println("------------------------------");
+        System.out.println("       계좌번호를 입력하세요.");
+        System.out.println("------------------------------");
+        mainProcess.getAmountProcess();
+    }
 }

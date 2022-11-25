@@ -5,16 +5,17 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
-    int accountListIndex = -1;
+    int accountListIndex;
 
     // 계좌정보 리스트 생성
-    public void addAccount(Account account) {
-        accountList.add(account);
+    public void addAccount(String name, String bankName, String accountName, String password, int amount, String date) {
+        int index = accountList.size();
+        accountList.add(new Account(index, name, bankName, accountName, password, amount, date));
     }  // 계좌정보 리스트에 저장
 
     public void showAllAccount() {
         for (Account accountItem : accountList) {
-            System.out.println("No. : " + accountItem);
+            System.out.println("No. : " + accountItem.getIndex());
             System.out.println("생성일자 : " + accountItem.getDate());
             System.out.println("이름 : " + accountItem.getName());
             System.out.println("은행명 : " + accountItem.getBankName());
@@ -23,74 +24,77 @@ public class AccountList {
         }
     }
 
-    public int getAccountByAccountNum(String accountNum) {
-        for (int i = 0; i < accountList.size(); i++) {
-            if (accountList.get(i).getAccountNum().equals(accountNum)) {
-                accountListIndex = i;
-            } else {
-                continue;
+    public int getIndexByAccountNum(String accountNum) {
+        for (Account account : this.accountList) {
+            if (account.getAccountNum().equals(accountNum)) {
+                return account.getIndex();
             }
         }
         return -1;
     }
 
-    public int getAccountByName(String name) {
-        for (int i = 0; i < accountList.size(); i++) {
-            if (accountList.get(i).getAccountNum().equals(name)) {
-                accountListIndex = i;
-            } else {
-                continue;
+    public int getIndexByName(String name) {
+        for (Account account : this.accountList) {
+            if (account.getName().equals(name)) {
+                return account.getIndex();
             }
         }
         return -1;
     }
 
-    public void updateAccount(String accountNum,String password,String name,String bankname,String newPassword) {
-        //현재 입력된 값들 변수 , 처음부터 다시 입력한다고 생각하고 변수 전부 새로 선언
-        String replaceName ;
-        String replaceBankName ;
-        String replaceAccountNum ;
-        String replacePassword ;
-        int replaceAmount ;
-        String replaceDate ;
-
-        //계좌번호,비밀번호 일치여부 체크
-        boolean bfindCheck =false;
-
-        //리스트 돌면서 계좌번호 , 비밀번호 일치하는 계좌 검사
-        for (int i =0 ; i< accountList.size(); i++) {
-            if (accountNum.equals(accountList.get(i).accountNum) && password.equals(accountList.get(i).password))
-            {
-                //계좌번호, 비밀번호 일치지 수정할 부분들은 대체하고 , (계좌번호,잔고)는 계속유지
-                //값 입력
-                replaceName = name; //변경값 적용
-                replaceBankName = bankname;//변경값 적용
-                replaceAccountNum = accountList.get(i).accountNum; //계좌번호는 변경안함
-                replacePassword = newPassword;//변경값 적용
-
-                //수정시간 업데이트
-                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-                String date = dateTimeFormatter.format(LocalDateTime.now());
-                replaceDate = date ;
-
-                //수정내용 Account리스트로 구성
-                Account replaceAccount = new Account(replaceName, replaceBankName, replaceAccountNum, replacePassword, accountList.get(i).amount, replaceDate);
-
-                accountList.set(i,replaceAccount);
-
-                System.out.print(replaceAccount.getAccountNum() +" : 계좌를 수정합니다.");
-                bfindCheck = true;
-                return;
-            }
-        }
-        if (bfindCheck ==false)
-        {
-            System.out.println("계좌를 찾지못했습니다.");
-            return;
-        }
-
-
+    public void getAccount(int accountListIndex) {
+        System.out.println("이름 : " + accountList.get(accountListIndex).getName());
+        System.out.println("은행명 : " + accountList.get(accountListIndex).getBankName());
+        System.out.println("계좌번호 : " + accountList.get(accountListIndex).getAccountNum());
     }
+
+
+//    public void updateAccount(String accountNum,String password,String name,String bankname,String newPassword) {
+//        //현재 입력된 값들 변수 , 처음부터 다시 입력한다고 생각하고 변수 전부 새로 선언
+//        String replaceName ;
+//        String replaceBankName ;
+//        String replaceAccountNum ;
+//        String replacePassword ;
+//        int replaceAmount ;
+//        String replaceDate ;
+//
+//        //계좌번호,비밀번호 일치여부 체크
+//        boolean bfindCheck =false;
+//
+//        //리스트 돌면서 계좌번호 , 비밀번호 일치하는 계좌 검사
+//        for (int i =0 ; i< accountList.size(); i++) {
+//            if (accountNum.equals(accountList.get(i).accountNum) && password.equals(accountList.get(i).password))
+//            {
+//                //계좌번호, 비밀번호 일치지 수정할 부분들은 대체하고 , (계좌번호,잔고)는 계속유지
+//                //값 입력
+//                replaceName = name; //변경값 적용
+//                replaceBankName = bankname;//변경값 적용
+//                replaceAccountNum = accountList.get(i).accountNum; //계좌번호는 변경안함
+//                replacePassword = newPassword;//변경값 적용
+//
+//                //수정시간 업데이트
+//                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+//                String date = dateTimeFormatter.format(LocalDateTime.now());
+//                replaceDate = date ;
+//
+//                //수정내용 Account리스트로 구성
+//                Account replaceAccount = new Account(replaceName, replaceBankName, replaceAccountNum, replacePassword, accountList.get(i).amount, replaceDate);
+//
+//                accountList.set(i,replaceAccount);
+//
+//                System.out.println(replaceAccount.getAccountNum() +" : 계좌를 수정합니다.");
+//                bfindCheck = true;
+//                return;
+//            }
+//        }
+//        if (bfindCheck ==false)
+//        {
+//            System.out.println("계좌를 찾지못했습니다.");
+//            return;
+//        }
+//
+//
+//    }
 
     public boolean delectAccount(String accountNum , String passWord){
         //가진 리스트를 전부 검사하면서 일치하는 리스트 찾음
@@ -104,5 +108,16 @@ public class AccountList {
             }
         }
         return false;
+    }
+
+    public int passwordCorrection(int index, String password) {
+        if(password.equals(accountList.get(index).getPassword())) {
+            return 1;
+        }
+        return 0;
+    }
+
+    public void getAmount(int index) {
+        System.out.println("잔고 : " + accountList.get(index).getAmount());
     }
 }

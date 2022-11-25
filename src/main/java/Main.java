@@ -21,6 +21,7 @@ public class Main {
                 mainUI.checkAccount();
 
             } else if (chooseMain == 4) {
+                mainUI.checkAmount();
 
             } else if (chooseMain == 5) {
                 mainUI.depositWithdrawal();

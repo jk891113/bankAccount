@@ -3,7 +3,7 @@ public class TransInfo {
     String bankName;
     String password;
     String accountNum;
-    String date;
+    String transDate;
     String depositWithdrawal;
     int money;
 
@@ -11,7 +11,7 @@ public class TransInfo {
         this.bankName = bankName;
         this.password = password;
         this.accountNum = accountNum;
-        this.date = date;
+        this.transDate = date;
         this.depositWithdrawal = depositWithdrawal;
         this.money = money;
     }

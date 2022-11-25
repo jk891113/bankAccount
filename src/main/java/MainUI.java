@@ -67,14 +67,14 @@ public class MainUI {
                 System.out.println("------------------------------");
                 System.out.println("           계좌목록");
                 System.out.println("------------------------------");
-                mainProcess.accountListProcess();
+                mainProcess.getAccountListProcess();
                 System.out.println("------------------------------");
                 break;
             case 4:
                 System.out.println("------------------------------");
                 System.out.println("           거래내역");
                 System.out.println("------------------------------");
-                mainProcess.historyProcess();
+                mainProcess.getHistoryProcess();
                 System.out.println("------------------------------");
                 break;
             default:

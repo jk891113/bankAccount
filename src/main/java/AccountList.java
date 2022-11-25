@@ -5,11 +5,8 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
-
-    int accountListIndex;
-
-
     // 계좌정보 리스트 생성
+
     public void addAccount(String name, String bankName, String accountName, String password, int amount, String date) {
         int index = accountList.size();
         accountList.add(new Account(index, name, bankName, accountName, password, amount, date));
@@ -127,7 +124,9 @@ public class AccountList {
     }
 
     public void getAmount(int index) {
-        System.out.println("잔고 : " + accountList.get(index).getAmount());
+        System.out.println("------------------------------");
+        System.out.println("       잔고 : " + accountList.get(index).getAmount());
+        System.out.println("------------------------------");
     }
 
 

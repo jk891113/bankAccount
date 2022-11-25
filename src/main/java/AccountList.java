@@ -9,13 +9,21 @@ public class AccountList {
     }  // 계좌정보 리스트에 저장
 
     public void showAllAccount() {
-//        System.out.println(accountList);
-//        for (Account acc : accountList) {
-//            System.out.println(acc.getName() + ", " + acc.getBankName() + ", " + acc.getAccountNum() + ", " + acc.getDate());
-//        }
+        for (Account accountItem : accountList) {
+            System.out.println("No. : " + accountItem);
+            System.out.println("생성일자 : " + accountItem.getDate());
+            System.out.println("이름 : " + accountItem.getName());
+            System.out.println("은행명 : " + accountItem.getBankName());
+            System.out.println("계좌번호 : " + accountItem.getAccountNum());
+            System.out.println("잔고 : " + accountItem.getAmount());
+        }
 //        for (int i = 0; i < accountList.size(); i++) {
 //            System.out.println(accountList.get(i));
 //        }
+    }
+
+    public void getAccount() {
+
     }
 
     public void updateAccount() {

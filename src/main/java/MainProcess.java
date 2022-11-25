@@ -59,7 +59,7 @@ public class MainProcess {
         Account account = new Account(name, bankName, accountNum, password, Integer.parseInt(amount), date);
         accountList.addAccount(account);
 
-        accountList.showAllAccount();
+//        accountList.showAllAccount();
 
         System.out.println("------------------------------");
         System.out.println("     이름 : " + account.getName());
@@ -97,8 +97,8 @@ public class MainProcess {
         }
     }
     public void getAccountNumProcess() {
-        AccountList accountList = new AccountList();
-        System.out.println(accountList);
+        accountList.showAllAccount();
+//        System.out.println(accountList);
 //        final HashMap accountItemList = new HashMap();
 //        int account = scanner.nextInt();
 //        List accountData = (List) accountItemList.get(account);

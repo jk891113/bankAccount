@@ -91,48 +91,17 @@ public class MainProcess {
         System.out.print("수정 비밀번호: ");
         String replacepassword = scanner.nextLine();
 
-        accountList.updateAccount(accountNum,password,replacename,replacebankname,replacepassword);
+        accountList.updateAccount(accountNum, password, replacename, replacebankname, replacepassword);
     }
 
-
-    public void checkByAccountNumProcess() {
-        while (true) {
-            System.out.print("계좌번호 : ");
-            String accountNum = scanner.nextLine();
-            boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
-            if (checkNum) {
-                break;
-            } else {
-                System.out.println("***계좌번호 형식이 올바르지 않습니다.***");
-                continue;
-            }
-        }
-    }
-    public void getAccountNumProcess() {
-        AccountList accountList = new AccountList();
-        System.out.println(accountList);
-//        final HashMap accountItemList = new HashMap();
-//        int account = scanner.nextInt();
-//        List accountData = (List) accountItemList.get(account);
-//        System.out.println("이름 : " + accountData.get(2));
-//        System.out.println("은행명 : " + accountData.get(4));
-//        System.out.println("계좌번호 : " + accountData.get(3));
-//        System.out.println("잔고 : " + accountData.get(1));
-//        System.out.println("등록일자 : " + accountData.get(5));
-//
-//        System.out.println(accountItemList);
-    }
-
-    public void deleteProcess()
-    {
+    public void deleteProcess() {
         System.out.print("계좌번호 : ");
         String accountNum = scanner.nextLine();
 
         System.out.print("비밀번호 : ");
         String password = scanner.nextLine();
         //계좌번호 삭제
-        if (!(accountList.delectAccount(accountNum,password)))
-        {
+        if (!(accountList.delectAccount(accountNum, password))) {
             //계좌번호나 비밀번호가 틀리다면 알림
             System.out.println("계좌를 찾지못했습니다.");
             return;
@@ -141,31 +110,72 @@ public class MainProcess {
     }
 
 
-    public void showAllprocess(){
+    public void showAllprocess() {
         accountList.showAllAccount();
+    }
+
+//    public void checkByAccountNumProcess() {
+//        System.out.print("계좌번호 : ");
+//        String name = scanner.nextLine();
+//        while (true) {
+//            System.out.print("계좌번호 : ");
+//            String accountNum = scanner.nextLine();
+//            boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
+//            if (checkNum) {
+//                break;
+//            } else {
+//                System.out.println("***계좌번호 형식이 올바르지 않습니다.***");
+//            }
+//        }
+//        while (true) {
+//            System.out.print("비밀번호 : ");
+//            String password = scanner.nextLine();
+//            System.out.println();
+//            boolean checkPassword = Pattern.matches("\\d{4}", password);
+//            if (checkPassword) {
+//                break;
+//            } else {
+//                System.out.println("***비밀번호가 올바르지 않습니다.***");
+//            }
+//        }
+//    }
+
+
+    public void checkByAccountNumProcess() {
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
+            while (true) {
+                if (checkNum == accountList.getAccountNum(accountNum)) {
+                    break;
+                } else if (!(accountNum.equals(checkNum))) {
+                    System.out.println("존재하는 계좌번호가 없습니다.");
+                } else {
+                    System.out.println("계좌번호가 일치하지 않습니다.");
+                }
+            }
+        }
     }
 
     public void checkByNameProcess() {
         System.out.print("소유자명 : ");
         String name = scanner.nextLine();
-    }
-    public void getcheckByNameProcess() {
-
-    }
-
-
-    public void getAccountListProcess() {
-
-    }
-
-
-    public void getHistoryProcess() {
-
+        while (true) {
+            if (name.equals(accountList.getCheckByName(name))) {
+                accountList.getCheckByName(name);
+                break;
+            } else if (!(name.equals(accountList.getCheckByName(name)))) {
+                System.out.println("존재하는 소유자명이 없습니다.");
+            }
+        }
     }
 
-
-
-
-
+    public void accountListProcess() {
+        accountList.getAccountList();
+    }
+    public void historyProcess() {
+        accountList.getHistory();
+    }
 }
 

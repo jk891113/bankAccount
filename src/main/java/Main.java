@@ -26,7 +26,7 @@ public class Main {
                 }
 
             } else if (chooseMain == 3) {
-//                mainUI.checkAccount();
+                mainUI.checkAccount();
                 mainProcess.showAllprocess();
 
             } else if (chooseMain == 4) {

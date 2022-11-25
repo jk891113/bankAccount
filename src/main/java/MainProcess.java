@@ -176,10 +176,10 @@ public class MainProcess {
     }
 
     public void checkByAccountNumProcess() {
-        System.out.print("계좌번호 : ");
-        String accountNum = scanner.nextLine();
-        boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
         while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
             if (checkNum == accountList.getAccountNum(accountNum)) {
                 break;
             } else if (!(accountNum.equals(checkNum))) {
@@ -191,9 +191,9 @@ public class MainProcess {
     }
 
     public void checkByNameProcess() {
-        System.out.print("소유자명 : ");
-        String name = scanner.nextLine();
         while (true) {
+            System.out.print("소유자명 : ");
+            String name = scanner.nextLine();
             if (accountList.getCheckByName(name)) {
                 break;
             } else {

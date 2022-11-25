@@ -1,5 +1,7 @@
 public class TransInfo {
-    // 이름, 거래일시, 계좌번호, 입금/출금 여부, 거래금액, 은행명
+    // 이름, 거래일시, 계좌번호, 입금/출금 여부, 거래금액, 은행명, 잔고
+    int index;
+    int transIndex;
     String name;
     String bankName;
     String password;
@@ -10,7 +12,9 @@ public class TransInfo {
     int amount;
 
 
-    public TransInfo(String name, String bankName, String password, String accountNum, String date, String depositWithdrawal, int money, int amount) {
+    public TransInfo(int index, int transIndex, String name, String bankName, String password, String accountNum, String date, String depositWithdrawal, int money, int amount) {
+        this.index = index;
+        this.transIndex = transIndex;
         this.name = name;
         this.bankName = bankName;
         this.password = password;

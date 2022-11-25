@@ -105,26 +105,43 @@ public class MainProcess {
     }
 
     public void editProcess() {
-        System.out.print("계좌번호 : ");
-        String accountNum = scanner.nextLine();
-        //계좌번호로 index번호 찾기
-        int index  = accountList.getIndexByAccountNum(accountNum);
-
-        System.out.print("비밀번호 : ");
-        String password = scanner.nextLine();
-
-
-        System.out.print("수정 이름 : ");
-        String replacename = scanner.nextLine();
-        System.out.print("수정 은행: ");
-        String replacebankname = scanner.nextLine();
-        System.out.print("수정 비밀번호: ");
-        String replacepassword = scanner.nextLine();
-
-        if ((accountList.passwordCorrection(index,password)==1)) {
-            accountList.updateAccount(index, replacename, replacebankname, replacepassword);
-            return;
+        int index;
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            //계좌번호로 index번호 찾기
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
+            } else {
+                accountList.getAccount(index);
+                break;
+            }
         }
+        while (true) {
+            System.out.print("비밀번호 : ");
+            String password = scanner.nextLine();
+            int exact = accountList.passwordCorrection(index, password);
+            if (exact == 1) {
+                System.out.print("수정 이름 : ");
+                String replaceName = scanner.nextLine();
+                System.out.print("수정 은행: ");
+                String replaceBankName = scanner.nextLine();
+                System.out.print("수정 비밀번호: ");
+                String replacePassword = scanner.nextLine();
+                accountList.editAccountList(index, replaceName, replaceBankName, replacePassword);
+                break;
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+        }
+
+
+
+//        if ((accountList.passwordCorrection(index,password)==1)) {
+//            accountList.updateAccount(index, replacename, replacebankname, replacepassword);
+//            return;
+//        }
     }
 
     public void deleteProcess() {

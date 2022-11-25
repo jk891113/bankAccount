@@ -58,14 +58,14 @@ public class AccountList {
         boolean bfindCheck =false;
 
         //리스트 돌면서 계좌번호 , 비밀번호 일치하는 계좌 검사
-        for (Account acc : accountList) {
-            if (accountNum.equals(acc.getAccountNum()) && password.equals(acc.getPassword()))
+        for (int i =0 ; i< accountList.size(); i++) {
+            if (accountNum.equals(accountList.get(i).accountNum) && password.equals(accountList.get(i).password))
             {
                 //계좌번호, 비밀번호 일치지 수정할 부분들은 대체하고 , (계좌번호,잔고)는 계속유지
                 //값 입력
                 replaceName = name; //변경값 적용
                 replaceBankName = bankname;//변경값 적용
-                replaceAccountNum = acc.getAccountNum(); //계좌번호는 변경안함
+                replaceAccountNum = accountList.get(i).accountNum; //계좌번호는 변경안함
                 replacePassword = newPassword;//변경값 적용
 
                 //수정시간 업데이트
@@ -74,11 +74,9 @@ public class AccountList {
                 replaceDate = date ;
 
                 //수정내용 Account리스트로 구성
-                Account replaceAccount = new Account(replaceName, replaceBankName, replaceAccountNum, replacePassword, acc.getAmount(), replaceDate);
+                Account replaceAccount = new Account(replaceName, replaceBankName, replaceAccountNum, replacePassword, accountList.get(i).amount, replaceDate);
 
-//                삭제후 재생성... 이부분근데 좀 불안하다.
-                accountList.remove(acc); //
-                accountList.add(replaceAccount);
+                accountList.set(i,replaceAccount);
 
                 System.out.print(replaceAccount.getAccountNum() +" : 계좌를 수정합니다.");
                 bfindCheck = true;
@@ -96,11 +94,12 @@ public class AccountList {
 
     public boolean delectAccount(String accountNum , String passWord){
         //가진 리스트를 전부 검사하면서 일치하는 리스트 찾음
-        for (Account acc : accountList) {
-            if (accountNum.equals(acc.getAccountNum()) && passWord.equals(acc.getPassword()))
+        for (int i =0 ; i<accountList.size(); i++) {
+            if (accountNum.equals(accountList.get(i).accountNum) && passWord.equals(accountList.get(i).password))
             {
-                System.out.print(acc.getAccountNum() +" : 계좌를 삭제합니다.");
-                accountList.remove(acc); //
+                System.out.print(accountList.get(i).accountNum +" : 계좌를 삭제합니다.");
+                System.out.println(i);
+                accountList.remove(accountList.remove(i)); //
                 return true;
             }
         }

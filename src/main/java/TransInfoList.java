@@ -9,7 +9,7 @@ public class TransInfoList {
     }
 
 
-    public int getTransInfoList(int index) {
+    public void getTransInfoList(int index) {
 
     }
 

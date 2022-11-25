@@ -29,20 +29,6 @@ public class MainUI {
         System.out.println("         1. 계좌 수정");
         System.out.println("         2. 계좌 삭제");
         System.out.println("------------------------------");
-        System.out.print("번호 입력 : ");
-        int chooseMenu = scanner.nextInt();
-        System.out.println();
-        if (chooseMenu == 1) {
-            System.out.println("------------------------------");
-            System.out.println("       계좌번호를 입력하세요.");
-            System.out.println("------------------------------");
-            mainProcess.editProcess();
-//            break;
-        } else if (chooseMenu == 2) {
-            System.out.println("------------------------------");
-            System.out.println("       계좌번호를 입력하세요.");
-            System.out.println("------------------------------");
-        }
     }
 
     public void checkAccount() {

@@ -79,8 +79,20 @@ public class MainProcess {
 
     public void editProcess() {
 
-    }
+        System.out.print("계좌번호 : ");
+        String accountNum = scanner.nextLine();
+        System.out.print("비밀번호 : ");
+        String password = scanner.nextLine();
 
+        System.out.print("수정 이름 : ");
+        String replacename = scanner.nextLine();
+        System.out.print("수정 은행: ");
+        String replacebankname = scanner.nextLine();
+        System.out.print("수정 비밀번호: ");
+        String replacepassword = scanner.nextLine();
+
+        accountList.updateAccount(accountNum,password,replacename,replacebankname,replacepassword);
+    }
 
 
     public void checkByAccountNumProcess() {
@@ -109,6 +121,28 @@ public class MainProcess {
 //        System.out.println("등록일자 : " + accountData.get(5));
 //
 //        System.out.println(accountItemList);
+    }
+
+    public void deleteProcess()
+    {
+        System.out.print("계좌번호 : ");
+        String accountNum = scanner.nextLine();
+
+        System.out.print("비밀번호 : ");
+        String password = scanner.nextLine();
+        //계좌번호 삭제
+        if (!(accountList.delectAccount(accountNum,password)))
+        {
+            //계좌번호나 비밀번호가 틀리다면 알림
+            System.out.println("계좌를 찾지못했습니다.");
+            return;
+        }
+        return;
+    }
+
+
+    public void showAllprocess(){
+        accountList.showAllAccount();
     }
 
     public void checkByNameProcess() {

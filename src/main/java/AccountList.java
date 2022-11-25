@@ -5,7 +5,6 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
-    List<Account> accountList = new ArrayList<>();
 
     // 계좌정보 리스트 생성
     public void addAccount(Account account) {
@@ -83,9 +82,9 @@ public class AccountList {
                         return true;
                     }
                 }
-                return false;
             }
         }
+        return false;
     }
 
     public boolean getAccountNum(String accountNum) {

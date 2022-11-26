@@ -47,6 +47,7 @@ public class MainUI {
         System.out.println("       3. 계좌목록 조회");
         System.out.println("       4. 거래내역 조회");
         System.out.println("------------------------------");
+        System.out.print("번호 입력 : ");
         int chooseLookup = scanner.nextInt();
         switch (chooseLookup) {
             case 1:

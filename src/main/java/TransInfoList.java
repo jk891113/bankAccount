@@ -10,17 +10,20 @@ public class TransInfoList {
     }
 
 
-    public void getTransInfoList(int index) {
-
+    public void getTransInfoList() {
+        System.out.println("    거래일자 : " + transInfoList.get(2));
+        System.out.println("    거래형태 : " + transInfoList.get(3));
+        System.out.println("    거래금액 : " + transInfoList.get(4));
+        System.out.println("    잔고 : " + transInfoList.get(5));
     }
 
-    public void showAllTransInfoList() {
+    public void showAllTransInfoList(int index) {
         for (TransInfo transInfo : transInfoList) {
-            System.out.print("No. : " + transInfo.getTransIndex());
-            System.out.print(" 일자 : " + transInfo.getTransDate());
-            System.out.print(" 입금/출금 : " + transInfo.getDepositWithdrawal());
-            System.out.print(" 거래금액 : " + transInfo.getMoney());
-            System.out.print(" 잔고 : " + transInfo.getAmount());
+            System.out.println("No." + transInfo.getTransIndex() + 1);
+            System.out.println("    거래일자 : " + transInfo.getTransDate());
+            System.out.println("    거래형태 : " + transInfo.getDepositWithdrawal());
+            System.out.println("    거래금액 : " + transInfo.getMoney());
+            System.out.println("    잔고 : " + transInfo.getAmount());
         }
     }
 }

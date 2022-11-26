@@ -1,15 +1,11 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
-    Account account;
 
     public void createProcess() {
         // 이름 입력
@@ -32,7 +28,6 @@ public class MainProcess {
                 break;
             } else {
                 System.out.println("***계좌번호 형식이 올바르지 않습니다.***");
-                continue;
             }
         }
         // 비밀번호 입력
@@ -47,7 +42,6 @@ public class MainProcess {
                 break;
             } else {
                 System.out.println("***비밀번호가 올바르지 않습니다.***");
-                continue;
             }
         }
         // 잔고 입력
@@ -148,29 +142,29 @@ public class MainProcess {
     }
 
     public void deleteProcess() {
-        System.out.print("계좌번호 : ");
-        String accountNum = scanner.nextLine();
-        //계좌번호를 이용해서 리스트 index찾기
-        int index  = accountList.getIndexByAccountNum(accountNum);
-        if(index ==-1)
-        {
-            System.out.println("존재하지 않는 계좌번호입니다.");
-            return;
+        int index;
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
+            } else {
+                accountList.getAccount(index);
+                break;
+            }
         }
-
-        System.out.print("비밀번호 : ");
-        String password = scanner.nextLine();
-        //비밀번호 확인
-        if ((accountList.passwordCorrection(index,password)==1))
-        {
-           if(!accountList.delectAccount(index))
-           {
-               System.out.println("계좌 미처리 ");
-               return;
-           }
-        }
-        else {
-            System.out.println("비밀번호가 틀렸습니다.");
+        while (true) {
+            System.out.print("비밀번호 : ");
+            String password = scanner.nextLine();
+            System.out.println();
+            int exact = accountList.passwordCorrection(index, password);
+            if (exact == 1) {
+                accountList.deleteAccount(index);
+                break;
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
         }
     }
 
@@ -203,6 +197,7 @@ public class MainProcess {
                 System.out.println("존재하는 소유자명이 없습니다.");
             } else {
                 accountList.getAccount(index);
+                break;
             }
         }
     }
@@ -238,13 +233,9 @@ public class MainProcess {
             if (exact == 1) {
                 System.out.println("입금할 금액을 입력하세요");
                 System.out.print("금액 : ");
-                int money = scanner.nextInt();
-                if (money >= 0) {
-                    accountList.deposit(index, money);
-                    break;
-                } else {
-                    System.out.println("잘못된 요청입니다.");
-                }
+                String money = scanner.nextLine();
+                accountList.deposit(index, Integer.parseInt(money));
+                break;
             } else {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }
@@ -272,15 +263,11 @@ public class MainProcess {
             System.out.println();
             int exact = accountList.passwordCorrection(index, password);
             if (exact == 1) {
-                System.out.println("입금할 금액을 입력하세요");
+                System.out.println("출금할 금액을 입력하세요");
                 System.out.print("금액 : ");
-                int money = scanner.nextInt();
-                if (money >= 0 && money > account.getAmount()) {
-                    accountList.withdrawal(index, money);
-                    break;
-                } else {
-                    System.out.println("잘못된 요청입니다.");
-                }
+                String money = scanner.nextLine();
+                accountList.withdrawal(index, Integer.parseInt(money));
+                break;
             } else {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }

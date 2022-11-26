@@ -1,11 +1,11 @@
 public class Account {
-    int index;
-    String name;
-    String bankName;
-    String accountNum;
-    String password;
+    private int index;
+    private String name;
+    private String bankName;
+    private String accountNum;
+    private String password;
     int amount;
-    String date;
+    private String date;
 
     public Account(int index, String name, String bankName, String accountNum, String password, int amount, String date) {
         this.index = index;

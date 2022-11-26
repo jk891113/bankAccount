@@ -105,6 +105,8 @@ public class MainUI {
         System.out.println("------------------------------");
         System.out.println("       계좌번호를 입력하세요.");
         System.out.println("------------------------------");
+        System.out.println("------------------------------");
         mainProcess.getAmountProcess();
+        System.out.println("------------------------------");
     }
 }

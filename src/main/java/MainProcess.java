@@ -203,6 +203,7 @@ public class MainProcess {
                 System.out.println("존재하는 소유자명이 없습니다.");
             } else {
                 accountList.getAccount(index);
+                break;
             }
         }
     }

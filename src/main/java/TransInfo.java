@@ -27,29 +27,19 @@ public class TransInfo {
         return transIndex;
     }
 
-    public void setTransDate(String date) {
-        this.transDate = date;
-    }
+
     public String getTransDate() {
         return transDate;
     }
-    public void setDepositWithdrawal(String depositWithdrawal) {
-        this.depositWithdrawal = depositWithdrawal;
-    }
+
     public String getDepositWithdrawal() {
         return depositWithdrawal;
     }
 
-    public void setMoney(int money) {
-        this.money = money;
-    }
     public int getMoney() {
         return money;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
     public int getAmount() {
         return amount;
     }

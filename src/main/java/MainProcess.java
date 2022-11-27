@@ -6,7 +6,6 @@ import java.util.regex.Pattern;
 public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
-    TransInfoList transInfo = new TransInfoList();
 
     public void createProcess() {
         // 이름 입력
@@ -63,50 +62,6 @@ public class MainProcess {
         String date = dateTimeFormatter.format(LocalDateTime.now());
 
         accountList.addAccount(name, bankName, accountNum, password, nAmount, date);
-
-
-
-
-//        accountList.showAllAccount();
-
-//        System.out.println("------------------------------");
-//        System.out.println("     이름 : " + accout.getName());
-//        System.out.println("     은행명 : " + account.getBankName());
-//        System.out.println("     계좌번호 : " + account.getAccountNum());
-//        System.out.println("     잔고 : " + account.getAmount());
-//        System.out.println("------------------------------");
-//        System.out.println(date + "에 생성이 완료 되었습니다.");
-
-
-//            //임시로 한꺼번에 입력
-//            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-//            String date = dateTimeFormatter.format(LocalDateTime.now());
-//            //임시로 전부 입력
-//            accountList.addAccount("임시1", "임시은행1", "111-1111-1111", "1111", Integer.parseInt("1000"), date);
-//
-//            dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-//            date = dateTimeFormatter.format(LocalDateTime.now());
-//            accountList.addAccount("임시2", "임시은행2", "222-2222-2222", "2222", Integer.parseInt("2000"), date);
-//
-//            dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-//            date = dateTimeFormatter.format(LocalDateTime.now());
-//            accountList.addAccount("임시3", "임시은행3", "333-3333-3333", "3333", Integer.parseInt("3000"), date);
-//
-//            dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-//            date = dateTimeFormatter.format(LocalDateTime.now());
-//            accountList.addAccount("임시4", "임시은행4", "444-4444-4444", "4444", Integer.parseInt("4000"), date);
-
-
-//            accountList.showAllAccount();
-
-
-
-//        for (Account acc : accountList) {
-//            System.out.println(acc.getName() + ", " + acc.getBankName() + ", " + acc.getAccountNum() + ", " + acc.getDate());
-//        }
-//        for (int i = 0; i < accountList.size(); i++) {
-//            System.out.println(accountList.get(i));
-//        }
     }
 
     public void editProcess() {
@@ -153,13 +108,6 @@ public class MainProcess {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }
         }
-
-
-
-//        if ((accountList.passwordCorrection(index,password)==1)) {
-//            accountList.updateAccount(index, replacename, replacebankname, replacepassword);
-//            return;
-//        }
     }
 
     public void deleteProcess() {

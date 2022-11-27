@@ -66,64 +66,7 @@ public class AccountList {
         System.out.println(date + "에 수정됨.");
     }
 
-//    public void updateAccount(int index, String newName,String newBankname,String newPassword) {
-//        //현재 입력된 값들 변수 , 처음부터 다시 입력한다고 생각하고 변수 전부 새로 선언
-//        String replaceName ;
-//        String replaceBankName ;
-//        String replaceAccountNum ;
-//        String replacePassword ;
-//        int replaceAmount ;
-//        String replaceDate ;
-//
-//        //계좌번호,비밀번호 일치여부 체크
-//        boolean bfindCheck =false;
-//
-//
-//        //리스트 돌면서 계좌번호 , 비밀번호 일치하는 계좌 검사
-//        for (Account account : this.accountList) {
-//            if (index == account.getIndex())
-//            {
-//                //계좌번호, 비밀번호 일치지 수정할 부분들은 대체하고 , (계좌번호,잔고)는 계속유지
-//                //값 입력
-//                replaceName = newName; //변경값 적용
-//                replaceBankName = newBankname;//변경값 적용
-//                replaceAccountNum = account.getAccountNum(); //계좌번호는 변경안함
-//                replacePassword = newPassword;//변경값 적용
-//                replaceAmount = account.getAmount();
-//
-//                //수정시간 업데이트
-//                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-//                String date = dateTimeFormatter.format(LocalDateTime.now());
-//                replaceDate = date ;
-//
-//                //수정내용 Account리스트로 구성
-//                Account replaceAccount = new Account(index,replaceName, replaceBankName, replaceAccountNum, replacePassword, replaceAmount, replaceDate);
-//
-//                accountList.set(index,replaceAccount);
-//
-//                System.out.println(replaceAccount.getAccountNum() +" : 계좌를 수정합니다.");
-//                bfindCheck = true;
-//                return;
-//            }
-//        }
-//        if (bfindCheck ==false)
-//        {
-//            System.out.println("계좌를 찾지못했습니다.");
-//            return;
-//        }
-
-
-//    }
-
     public void deleteAccount(int index) {
-//        for (Account account : this.accountList) {
-//            if (index == account.getIndex()) {
-//                System.out.println(account.getAccountNum() + " : 계좌를 삭제합니다.");
-//                accountList.remove(index);
-//                return true;
-//            }
-//        }
-//        return false;
         for (Account account : this.accountList) {
             if (index == account.getIndex()) {
                 accountList.remove(index);

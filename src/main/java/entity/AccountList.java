@@ -1,3 +1,5 @@
+package entities;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -53,9 +55,9 @@ public class AccountList {
     public void editAccountList(int index, String replaceName, String replaceBankName, String replacePassword) {
         for (Account account : this.accountList) {
             if (index == account.getIndex()) {
-                account.setName(replaceName);
-                account.setBankName(replaceBankName);
-                account.setPassword(replacePassword);
+                account.editName(replaceName);
+                account.editBankName(replaceBankName);
+                account.editPassword(replacePassword);
                 System.out.println(account.getAccountNum() + "의 계좌를 수정합니다.");
                 break;
             }
@@ -79,7 +81,7 @@ public class AccountList {
         // 삭제 후 인덱스 번호 재정렬
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
-            account.setIndex(i);
+            account.arrangeIndex(i);
         }
     }
 

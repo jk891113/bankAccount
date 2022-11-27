@@ -1,3 +1,5 @@
+import entities.AccountList;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -6,7 +8,6 @@ import java.util.regex.Pattern;
 public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
-//    FrequentlyUsed frequentlyUsed = new FrequentlyUsed();
 
     public void createProcess() {
         // 이름 입력
@@ -46,18 +47,17 @@ public class MainProcess {
             }
         }
         // 잔고 입력
-        int nAmount = 0;
+        int nAmount;
         while (true) {
-            System.out.print("잔고 : ");
             try {
+                System.out.print("잔고 : ");
                 String amount = scanner.nextLine();
+                System.out.println();
                 nAmount = Integer.parseInt(amount);
+                break;
             } catch (NumberFormatException e) {
                 System.out.println("잔고 입력이 올바르지 않습니다.");
-                continue;
             }
-            System.out.println();
-            break;
         }
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
         String date = dateTimeFormatter.format(LocalDateTime.now());
@@ -90,14 +90,11 @@ public class MainProcess {
                 String replaceName = scanner.nextLine();
                 System.out.print("수정 은행: ");
                 String replaceBankName = scanner.nextLine();
-
                 String replacePassword;
-                while (true)
-                {
+                while (true) {
                     System.out.print("수정 비밀번호: ");
                     replacePassword = scanner.nextLine();
-                    if (!(Pattern.matches("\\d{4}", replacePassword)))
-                    {
+                    if (!(Pattern.matches("\\d{4}", replacePassword))) {
                         System.out.println("***비밀번호가 입력방식이 올바르지 않습니다.***");
                         continue;
                     }
@@ -234,13 +231,11 @@ public class MainProcess {
                 try {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
+                    accountList.deposit(index, nAmount);
                 } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");
-                    continue;
                 }
-                accountList.deposit(index, nAmount);
             }
-
         }
     }
 
@@ -275,15 +270,13 @@ public class MainProcess {
                 try {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
-                }catch (NumberFormatException e) {
+                    accountList.withdrawal(index, nAmount);
+                } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");
-                    continue;
                 }
-                accountList.withdrawal(index, nAmount);
             }
         }
     }
-
 
     public void getAmountProcess() {
         int index;

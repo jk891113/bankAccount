@@ -1,3 +1,5 @@
+package entities;
+
 public class Account {
     private int index;
     private String name;
@@ -17,20 +19,20 @@ public class Account {
         this.date = date;
     }
 
-    public void setIndex(int index) {
+    public void arrangeIndex(int index) {
         this.index = index;
     }
     public int getIndex() {
         return index;
     }
-    public void setName(String name) {
+    public void editName(String name) {
         this.name = name;
     }
     public String getName() {
         return name;
     }
 
-    public void setBankName(String bankName) {
+    public void editBankName(String bankName) {
         this.bankName = bankName;
     }
     public String getBankName() {
@@ -41,7 +43,7 @@ public class Account {
         return accountNum;
     }
 
-    public void setPassword(String password) {
+    public void editPassword(String password) {
         this.password = password;
     }
     public String getPassword() {

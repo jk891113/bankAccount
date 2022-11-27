@@ -1,3 +1,5 @@
+package entities;
+
 public class TransInfo {
     // 이름, 거래일시, 계좌번호, 입금/출금 여부, 거래금액, 은행명, 잔고
     String accountNum;
@@ -20,7 +22,7 @@ public class TransInfo {
         return accountNum;
     }
 
-    public void setTransIndex(int transIndex) {
+    public void arrangeTransIndex(int transIndex) {
         this.transIndex = transIndex;
     }
     public int getTransIndex() {

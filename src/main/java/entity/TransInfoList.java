@@ -1,3 +1,5 @@
+package entities;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +42,7 @@ public class TransInfoList {
         }
         for (int i = 0; i < transInfoList.size(); i++) {
             TransInfo transInfo = transInfoList.get(i);
-            transInfo.setTransIndex(i);
+            transInfo.arrangeTransIndex(i);
         }
     }
 }

@@ -131,6 +131,7 @@ public class AccountList {
                 break;
             }
         }
+        // 삭제 후 인덱스 번호 재정렬
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             account.setIndex(i);
@@ -194,16 +195,9 @@ public class AccountList {
         }
     }
 
-    public void getHistory() {
+    public void getHistory(int index) {
         for (Account account : accountList) {
-            System.out.println("------------------------------");
-            System.out.println("  계좌번호 : " + account.getAccountNum());
-            System.out.println("  은행명 : " + account.getBankName());
-            System.out.println("  거래일자 : ");
-            System.out.println("  거래시간 : ");
-            System.out.println("  입금금액 : ");
-            System.out.println("  출금금액: ");
-            System.out.println("------------------------------");
+            transInfoList.showAllTransInfoList(index);
         }
     }
 

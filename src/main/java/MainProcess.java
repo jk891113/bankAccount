@@ -207,7 +207,31 @@ public class MainProcess {
     }
 
     public void historyProcess() {
-        accountList.getHistory();
+        int index;
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            System.out.println();
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
+            } else {
+                accountList.getAccount(index);
+                break;
+            }
+        }
+        while (true) {
+            System.out.print("비밀번호 : ");
+            String password = scanner.nextLine();
+            System.out.println();
+            int exact = accountList.passwordCorrection(index, password);
+            if (exact == 1) {
+                accountList.getHistory(index);
+                break;
+            } else {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+        }
     }
 
     public void depositProcess() {

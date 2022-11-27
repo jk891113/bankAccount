@@ -75,9 +75,8 @@ public class MainUI {
                 System.out.println("------------------------------");
                 System.out.println("           거래내역");
                 System.out.println("------------------------------");
-
+                System.out.println("------------------------------");
                 mainProcess.historyProcess();
-
                 System.out.println("------------------------------");
                 break;
             default:

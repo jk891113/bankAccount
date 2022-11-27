@@ -234,10 +234,12 @@ public class MainProcess {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
                     accountList.deposit(index, nAmount);
+                    break;
                 } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");
                 }
             }
+            break;
         }
     }
 
@@ -273,10 +275,12 @@ public class MainProcess {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
                     accountList.withdrawal(index, nAmount);
+                    break;
                 } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");
                 }
             }
+            break;
         }
     }
 

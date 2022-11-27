@@ -1,3 +1,7 @@
+package presentation;
+
+import service.MainProcess;
+
 import java.util.Scanner;
 
 public class MainUI {

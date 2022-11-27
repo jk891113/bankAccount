@@ -1,4 +1,4 @@
-package entities;
+package entity;
 
 public class TransInfo {
     // 이름, 거래일시, 계좌번호, 입금/출금 여부, 거래금액, 은행명, 잔고

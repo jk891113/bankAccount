@@ -1,4 +1,6 @@
-import entities.AccountList;
+package service;
+
+import entity.AccountList;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -46,15 +46,23 @@ public class MainProcess {
             }
         }
         // 잔고 입력
-        System.out.print("잔고 : ");
-        String amount = scanner.nextLine();
-        System.out.println();
-
+        int nAmount = 0;
+        while (true) {
+            System.out.print("잔고 : ");
+            try {
+                String amount = scanner.nextLine();
+                nAmount = Integer.parseInt(amount);
+            } catch (NumberFormatException e) {
+                System.out.println("잔고 입력이 올바르지 않습니다.");
+                continue;
+            }
+            System.out.println();
+            break;
+        }
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
         String date = dateTimeFormatter.format(LocalDateTime.now());
 
-        accountList.addAccount(name, bankName, accountNum, password, Integer.parseInt(amount), date);
-
+        accountList.addAccount(name, bankName, accountNum, password, nAmount, date);
 
 
 
@@ -125,10 +133,22 @@ public class MainProcess {
                 String replaceName = scanner.nextLine();
                 System.out.print("수정 은행: ");
                 String replaceBankName = scanner.nextLine();
-                System.out.print("수정 비밀번호: ");
-                String replacePassword = scanner.nextLine();
+
+                String replacePassword;
+                while (true)
+                {
+                    System.out.print("수정 비밀번호: ");
+                    replacePassword = scanner.nextLine();
+                    if (!(Pattern.matches("\\d{4}", replacePassword)))
+                    {
+                        System.out.println("***비밀번호가 입력방식이 올바르지 않습니다.***");
+                        continue;
+                    }
+                    break;
+                }
                 accountList.editAccountList(index, replaceName, replaceBankName, replacePassword);
                 break;
+
             } else {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }
@@ -247,21 +267,32 @@ public class MainProcess {
                 break;
             }
         }
-
+        int nAmount =0;
         while (true) {
             System.out.print("비밀번호 : ");
             String password = scanner.nextLine();
             System.out.println();
             int exact = accountList.passwordCorrection(index, password);
-            if (exact == 1) {
+            if (exact !=1)
+            {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+                continue;
+            }
+
+            while (true) {
                 System.out.println("입금할 금액을 입력하세요");
                 System.out.print("금액 : ");
-                String money = scanner.nextLine();
-                accountList.deposit(index, Integer.parseInt(money));
-                break;
-            } else {
-                System.out.println("비밀번호가 일치하지 않습니다.");
+                try {
+                    String money = scanner.nextLine();
+                    nAmount = Integer.parseInt(money);
+                } catch (NumberFormatException e) {
+                    System.out.println("금액 입력이 올바르지 않습니다.");
+                    continue;
+                }
+                accountList.deposit(index, nAmount);
+                return;
             }
+
         }
     }
 
@@ -280,19 +311,29 @@ public class MainProcess {
             }
         }
 
+        int nAmount;
         while (true) {
             System.out.print("비밀번호 : ");
             String password = scanner.nextLine();
             System.out.println();
             int exact = accountList.passwordCorrection(index, password);
-            if (exact == 1) {
+            if (exact !=1)
+            {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+                continue;
+            }
+            while (true){
                 System.out.println("출금할 금액을 입력하세요");
                 System.out.print("금액 : ");
-                String money = scanner.nextLine();
-                accountList.withdrawal(index, Integer.parseInt(money));
-                break;
-            } else {
-                System.out.println("비밀번호가 일치하지 않습니다.");
+                try {
+                    String money = scanner.nextLine();
+                    nAmount = Integer.parseInt(money);
+                }catch (NumberFormatException e) {
+                    System.out.println("금액 입력이 올바르지 않습니다.");
+                    continue;
+                }
+                accountList.withdrawal(index, nAmount);
+                return;
             }
         }
     }

@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
+//    FrequentlyUsed frequentlyUsed = new FrequentlyUsed();
 
     public void createProcess() {
         // 이름 입력
@@ -62,6 +63,7 @@ public class MainProcess {
         String date = dateTimeFormatter.format(LocalDateTime.now());
 
         accountList.addAccount(name, bankName, accountNum, password, nAmount, date);
+        accountList.showAllAccount();
     }
 
     public void editProcess() {
@@ -221,8 +223,7 @@ public class MainProcess {
             String password = scanner.nextLine();
             System.out.println();
             int exact = accountList.passwordCorrection(index, password);
-            if (exact !=1)
-            {
+            if (exact !=1) {
                 System.out.println("비밀번호가 일치하지 않습니다.");
                 continue;
             }
@@ -238,7 +239,6 @@ public class MainProcess {
                     continue;
                 }
                 accountList.deposit(index, nAmount);
-                return;
             }
 
         }
@@ -265,8 +265,7 @@ public class MainProcess {
             String password = scanner.nextLine();
             System.out.println();
             int exact = accountList.passwordCorrection(index, password);
-            if (exact !=1)
-            {
+            if (exact !=1) {
                 System.out.println("비밀번호가 일치하지 않습니다.");
                 continue;
             }
@@ -281,7 +280,6 @@ public class MainProcess {
                     continue;
                 }
                 accountList.withdrawal(index, nAmount);
-                return;
             }
         }
     }
@@ -316,6 +314,4 @@ public class MainProcess {
             }
         }
     }
-
 }
-

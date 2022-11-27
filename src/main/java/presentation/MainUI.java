@@ -52,7 +52,7 @@ public class MainUI {
     public void checkAccount() {
         System.out.println("------------------------------");
         System.out.println("       1. 계좌번호로 조회");
-        System.out.println("       2. 소유자명으로 조회");
+        System.out.println("       2. 예금주명으로 조회");
         System.out.println("       3. 계좌목록 조회");
         System.out.println("       4. 거래내역 조회");
         System.out.println("------------------------------");
@@ -68,7 +68,7 @@ public class MainUI {
                 break;
             case 2:
                 System.out.println("------------------------------");
-                System.out.println("          소유자명 입력");
+                System.out.println("          예금주명 입력");
                 System.out.println("------------------------------");
                 mainProcess.checkByNameProcess();
                 System.out.println("------------------------------");

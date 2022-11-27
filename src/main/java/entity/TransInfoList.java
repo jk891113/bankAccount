@@ -21,9 +21,9 @@ public class TransInfoList {
     }
 
     public void showAllTransInfoList(String accountNum) {
+        System.out.println("계좌번호 : " + accountNum);
         for (TransInfo transInfo : transInfoList) {
             if (accountNum.equals(transInfo.getAccountNum())) {
-                System.out.println("계좌번호 : " + transInfo.getAccountNum());
                 System.out.println("No." + transInfo.getTransIndex());
                 System.out.println("    거래일자 : " + transInfo.getTransDate());
                 System.out.println("    거래형태 : " + transInfo.getDepositWithdrawal());
@@ -34,12 +34,13 @@ public class TransInfoList {
     }
 
     public void deleteTransInfo(String accountNum) {
-        for(TransInfo transInfo : this.transInfoList) {
-            if (accountNum.equals(transInfo.getAccountNum()) ) {
-                transInfoList.remove(transInfo.getTransIndex());
-                System.out.println("해당 계좌의 거래내역을 삭제합니다.");
+        for (int i = transInfoList.size() - 1; i >= 0; i--) {
+            if (accountNum.equals((transInfoList.get(i).getAccountNum()))) {
+                transInfoList.remove(transInfoList.get(i).getTransIndex());
             }
         }
+        System.out.println("해당 계좌의 거래내역을 삭제합니다.");
+
         for (int i = 0; i < transInfoList.size(); i++) {
             TransInfo transInfo = transInfoList.get(i);
             transInfo.arrangeTransIndex(i);

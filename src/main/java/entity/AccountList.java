@@ -19,10 +19,11 @@ public class AccountList {
         for (Account accountItem : accountList) {
             System.out.println("No. : " + accountItem.getIndex());
             System.out.println("생성일자 : " + accountItem.getDate());
-            System.out.println("이름 : " + accountItem.getName());
+            System.out.println("예금주 : " + accountItem.getName());
             System.out.println("은행명 : " + accountItem.getBankName());
             System.out.println("계좌번호 : " + accountItem.getAccountNum());
             System.out.println("잔고 : " + accountItem.getAmount());
+            System.out.println();
         }
     }
 
@@ -44,24 +45,19 @@ public class AccountList {
         return -1;
     }
 
-    public void getAccount(int accountListIndex) {
+    public void getAccount(int index) {
         System.out.println("------------------------------");
-        System.out.println("    이름 : " + accountList.get(accountListIndex).getName());
-        System.out.println("    은행명 : " + accountList.get(accountListIndex).getBankName());
-        System.out.println("    계좌번호 : " + accountList.get(accountListIndex).getAccountNum());
+        System.out.println("    예금주 : " + accountList.get(index).getName());
+        System.out.println("    은행명 : " + accountList.get(index).getBankName());
+        System.out.println("    계좌번호 : " + accountList.get(index).getAccountNum());
         System.out.println("------------------------------");
     }
 
     public void editAccountList(int index, String replaceName, String replaceBankName, String replacePassword) {
-        for (Account account : this.accountList) {
-            if (index == account.getIndex()) {
-                account.editName(replaceName);
-                account.editBankName(replaceBankName);
-                account.editPassword(replacePassword);
-                System.out.println(account.getAccountNum() + "의 계좌를 수정합니다.");
-                break;
-            }
-        }
+        accountList.get(index).editName(replaceName);
+        accountList.get(index).editBankName(replaceBankName);
+        accountList.get(index).editPassword(replacePassword);
+
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
         String date = dateTimeFormatter.format(LocalDateTime.now());
 
@@ -69,14 +65,9 @@ public class AccountList {
     }
 
     public void deleteAccount(int index) {
-        for (Account account : this.accountList) {
-            if (index == account.getIndex()) {
-                accountList.remove(index);
-                System.out.println("해당 계좌를 삭제합니다.");
-                transInfoList.deleteTransInfo(account.getAccountNum());
-                break;
-            }
-        }
+        accountList.remove(index);
+        System.out.println("해당 계좌를 삭제합니다.");
+        transInfoList.deleteTransInfo((accountList.get(index).getAccountNum()));
 
         // 삭제 후 인덱스 번호 재정렬
         for (int i = 0; i < accountList.size(); i++) {
@@ -101,41 +92,35 @@ public class AccountList {
         }
 
     public void deposit(int index, int money) {
-        for (Account account : this.accountList) {
-            if (money >= 0) {
-                if (index == account.getIndex()) {
-                    account.setAmount((account.getAmount() + money));
-
-                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-                    String date = dateTimeFormatter.format(LocalDateTime.now());
-                    String depositWithdrawal = "입금";
-                    transInfoList.addTransInfoList(account.getAccountNum(), date, depositWithdrawal, money, account.amount);
-
-                    System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + account.amount + "원 입니다.");
-                }
-            } else {
-                System.out.println("잘못된 요청입니다.");
+        Account target = accountList.get(index);
+        if (money >= 0) {
+            if (index == target.getIndex()) {
+                target.setAmount(target.getAmount() + money);
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+                String date = dateTimeFormatter.format(LocalDateTime.now());
+                String depositWithdrawal = "입금";
+                transInfoList.addTransInfoList(target.getAccountNum(), date, depositWithdrawal, money, target.amount);
+                System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + target.amount + "원 입니다.");
             }
+        } else {
+            System.out.println("잘못된 요청입니다.");
         }
         transInfoList.getTransInfoList();
     }
 
     public void withdrawal(int index, int money) {
-        for (Account account : this.accountList) {
-            if (money >= 0 && money < account.getAmount()) {
-                if (index == account.getIndex()) {
-                    account.setAmount((account.getAmount() - money));
+        Account target = accountList.get(index);
+        if (money >= 0 && money < target.getAmount()) {
+            target.setAmount((target.getAmount() - money));
 
-                    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
-                    String date = dateTimeFormatter.format(LocalDateTime.now());
-                    String depositWithdrawal = "출금";
-                    transInfoList.addTransInfoList(account.getAccountNum(), date, depositWithdrawal, money, account.amount);
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+            String date = dateTimeFormatter.format(LocalDateTime.now());
+            String depositWithdrawal = "출금";
+            transInfoList.addTransInfoList(target.getAccountNum(), date, depositWithdrawal, money, target.amount);
 
-                    System.out.println(date + "에 " + money + "원 출금되어" + " 잔액 " + account.amount + "원 입니다.");
-                }
-            } else {
-                System.out.println("잘못된 요청입니다.");
-            }
+            System.out.println(date + "에 " + money + "원 출금되어" + " 잔액 " + target.amount + "원 입니다.");
+        } else {
+            System.out.println("잘못된 요청입니다.");
         }
         transInfoList.getTransInfoList();
     }

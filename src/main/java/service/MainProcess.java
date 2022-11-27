@@ -13,20 +13,17 @@ public class MainProcess {
 
     public void createProcess() {
         // 이름 입력
-        System.out.print("이름 : ");
+        System.out.print("예금주 : ");
         String name = scanner.nextLine();
-        System.out.println();
         // 은행명 입력
         System.out.print("은행명 : ");
         String bankName = scanner.nextLine();
-        System.out.println();
         // 계좌번호 입력
         String accountNum;
         while (true) {
-            System.out.println("계좌번호 형식에 맞춰 작성해주세요. (ex.000-0000-0000)");
+            System.out.println("계좌번호 형식에 맞게 작성하세요. (ex. 000-0000-0000)");
             System.out.print("계좌번호 : ");
             accountNum = scanner.nextLine();
-            System.out.println();
             boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);
             if (checkNum) {
                 break;
@@ -40,7 +37,6 @@ public class MainProcess {
             System.out.println("4자리 숫자로 작성해주세요.");
             System.out.print("비밀번호 : ");
             password = scanner.nextLine();
-            System.out.println();
             boolean checkPassword = Pattern.matches("\\d{4}", password);
             if (checkPassword) {
                 break;
@@ -54,14 +50,13 @@ public class MainProcess {
             try {
                 System.out.print("잔고 : ");
                 String amount = scanner.nextLine();
-                System.out.println();
                 nAmount = Integer.parseInt(amount);
                 break;
             } catch (NumberFormatException e) {
                 System.out.println("잔고 입력이 올바르지 않습니다.");
             }
         }
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd hh:mm");
         String date = dateTimeFormatter.format(LocalDateTime.now());
 
         accountList.addAccount(name, bankName, accountNum, password, nAmount, date);
@@ -157,11 +152,11 @@ public class MainProcess {
     public void checkByNameProcess() {
         int index;
         while (true) {
-            System.out.print("소유자명 : ");
+            System.out.print("예금주 : ");
             String name = scanner.nextLine();
             index = accountList.getIndexByName(name);
             if (index == -1) {
-                System.out.println("존재하는 소유자명이 없습니다.");
+                System.out.println("존재하는 예금주가 없습니다.");
             } else {
                 accountList.getAccount(index);
                 break;
@@ -234,10 +229,12 @@ public class MainProcess {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
                     accountList.deposit(index, nAmount);
+                    break;
                 } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");
                 }
             }
+            break;
         }
     }
 
@@ -273,10 +270,12 @@ public class MainProcess {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
                     accountList.withdrawal(index, nAmount);
+                    break;
                 } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");
                 }
             }
+            break;
         }
     }
 

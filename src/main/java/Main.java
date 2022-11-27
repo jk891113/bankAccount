@@ -8,7 +8,16 @@ public class Main {
         while (true) {
             mainUI.run();
             System.out.print("번호 입력 : ");
-            int chooseMain = scanner.nextInt();
+            int chooseMain ;
+            String sChooseMain;
+            try {
+                sChooseMain = scanner.nextLine();
+                chooseMain = Integer.parseInt(sChooseMain);
+
+            } catch (NumberFormatException e) {
+                System.out.println("입력이 올바르지 않습니다.");
+                continue;
+            }
             if (chooseMain == 1) {
                 mainUI.createAccount();
             } else if (chooseMain == 2) {

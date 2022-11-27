@@ -132,10 +132,22 @@ public class MainProcess {
                 String replaceName = scanner.nextLine();
                 System.out.print("수정 은행: ");
                 String replaceBankName = scanner.nextLine();
-                System.out.print("수정 비밀번호: ");
-                String replacePassword = scanner.nextLine();
+
+                String replacePassword;
+                while (true)
+                {
+                    System.out.print("수정 비밀번호: ");
+                    replacePassword = scanner.nextLine();
+                    if (!(Pattern.matches("\\d{4}", replacePassword)))
+                    {
+                        System.out.println("***비밀번호가 입력방식이 올바르지 않습니다.***");
+                        continue;
+                    }
+                    break;
+                }
                 accountList.editAccountList(index, replaceName, replaceBankName, replacePassword);
                 break;
+
             } else {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }

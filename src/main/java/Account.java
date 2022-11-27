@@ -37,9 +37,6 @@ public class Account {
         return bankName;
     }
 
-    public void setAccountNum(String accountNum) {
-        this.accountNum = accountNum;
-    }
     public String getAccountNum() {
         return accountNum;
     }
@@ -58,9 +55,6 @@ public class Account {
         return amount;
     }
 
-    public void setDate(String date) {
-        this.date = date;
-    }
     public String getDate() {
         return date;
     }

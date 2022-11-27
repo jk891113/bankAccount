@@ -128,17 +128,17 @@ public class AccountList {
             if (index == account.getIndex()) {
                 accountList.remove(index);
                 System.out.println("해당 계좌를 삭제합니다.");
+                transInfoList.deleteTransInfo(account.getAccountNum());
                 break;
             }
         }
+
         // 삭제 후 인덱스 번호 재정렬
         for (int i = 0; i < accountList.size(); i++) {
             Account account = accountList.get(i);
             account.setIndex(i);
         }
-
     }
-
 
     public int passwordCorrection(int index, String password) {
         if (password.equals(accountList.get(index).getPassword())) {
@@ -151,55 +151,9 @@ public class AccountList {
         System.out.println("       잔고 : " + accountList.get(index).getAmount());
     }
 
-
-    public boolean getAccountNum(String accountNum) {
-        for (Account account : accountList) {
-            if (accountNum.equals(account.getAccountNum())) {
-                System.out.println("------------------------------");
-                System.out.println("  소유자명 : " + account.getName());
-                System.out.println("  계좌번호 : " + account.getAccountNum());
-                System.out.println("  잔고 : " + account.getAmount());
-                System.out.println("------------------------------");
-                break;
-            }
+    public void getHistory(String accountNum) {
+            transInfoList.showAllTransInfoList(accountNum);
         }
-        return false;
-    }
-
-    public boolean getCheckByName(String name) {
-        for (Account account : accountList) {
-            if (name.equals(account.getName())) {
-                System.out.println("------------------------------");
-                System.out.println("  은행명 : " + account.getBankName());
-                System.out.println("  계좌번호 : " + account.getAccountNum());
-                System.out.println("  잔고 : " + account.getAmount());
-                System.out.println("  거래일자 : " + account.getDate());
-                System.out.println("------------------------------");
-                break;
-            }
-        }
-        return false;
-    }
-
-    public void getAccountList() {
-        for (Account account : accountList) {
-            System.out.println("------------------------------");
-            System.out.println("  소유자명 : " + account.getBankName());
-            System.out.println("  은행명 : " + account.getBankName());
-            System.out.println("  계좌번호 : " + account.getAccountNum());
-            System.out.println("  잔고 : " + account.getAmount());
-            System.out.println("  입금내역 : " + account.getDate());
-            System.out.println("  입출금내역 : " + account.getDate());
-            System.out.println("  거래일자 : " + account.getDate());
-            System.out.println("------------------------------");
-        }
-    }
-
-    public void getHistory(int index) {
-        for (Account account : accountList) {
-            transInfoList.showAllTransInfoList(index);
-        }
-    }
 
     public void deposit(int index, int money) {
         for (Account account : this.accountList) {
@@ -210,7 +164,7 @@ public class AccountList {
                     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
                     String date = dateTimeFormatter.format(LocalDateTime.now());
                     String depositWithdrawal = "입금";
-                    transInfoList.addTransInfoList(index, date, depositWithdrawal, money, account.amount);
+                    transInfoList.addTransInfoList(account.getAccountNum(), date, depositWithdrawal, money, account.amount);
 
                     System.out.println(date + "에 " + money + "원 입금되어" + " 잔액 " + account.amount + "원 입니다.");
                 }
@@ -230,7 +184,7 @@ public class AccountList {
                     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy.MM.dd h:mm");
                     String date = dateTimeFormatter.format(LocalDateTime.now());
                     String depositWithdrawal = "출금";
-                    transInfoList.addTransInfoList(index, date, depositWithdrawal, money, account.amount);
+                    transInfoList.addTransInfoList(account.getAccountNum(), date, depositWithdrawal, money, account.amount);
 
                     System.out.println(date + "에 " + money + "원 출금되어" + " 잔액 " + account.amount + "원 입니다.");
                 }

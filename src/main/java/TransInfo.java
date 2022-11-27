@@ -1,14 +1,14 @@
 public class TransInfo {
     // 이름, 거래일시, 계좌번호, 입금/출금 여부, 거래금액, 은행명, 잔고
-    int index;
+    String accountNum;
     int transIndex;
     String transDate;
     String depositWithdrawal;
     int money;
     int amount;
 
-    public TransInfo(int index, int transIndex, String transDate, String depositWithdrawal, int money, int amount) {
-        this.index = index;
+    public TransInfo(String accountNum, int transIndex, String transDate, String depositWithdrawal, int money, int amount) {
+        this.accountNum = accountNum;
         this.transIndex = transIndex;
         this.transDate = transDate;
         this.depositWithdrawal = depositWithdrawal;
@@ -16,11 +16,8 @@ public class TransInfo {
         this.amount = amount;
     }
 
-    public void setIndex(int index) {
-        this.index = index;
-    }
-    public int getIndex() {
-        return index;
+    public String getAccountNum() {
+        return accountNum;
     }
 
     public void setTransIndex(int transIndex) {

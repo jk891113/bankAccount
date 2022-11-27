@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
+    TransInfoList transInfo = new TransInfoList();
 
     public void createProcess() {
         // 이름 입력
@@ -142,10 +143,11 @@ public class MainProcess {
     }
 
     public void deleteProcess() {
+        String accountNum;
         int index;
         while (true) {
             System.out.print("계좌번호 : ");
-            String accountNum = scanner.nextLine();
+            accountNum = scanner.nextLine();
             index = accountList.getIndexByAccountNum(accountNum);
             if (index == -1) {
                 System.out.println("계좌번호를 찾을 수 없습니다.");
@@ -166,10 +168,6 @@ public class MainProcess {
                 System.out.println("비밀번호가 일치하지 않습니다.");
             }
         }
-    }
-
-    public void showAllProcess(){
-        accountList.showAllAccount();
     }
 
     public void checkByAccountNumProcess() {
@@ -203,14 +201,15 @@ public class MainProcess {
     }
 
     public void accountListProcess() {
-        accountList.getAccountList();
+        accountList.showAllAccount();
     }
 
     public void historyProcess() {
+        String accountNum;
         int index;
         while (true) {
             System.out.print("계좌번호 : ");
-            String accountNum = scanner.nextLine();
+            accountNum = scanner.nextLine();
             System.out.println();
             index = accountList.getIndexByAccountNum(accountNum);
             if (index == -1) {
@@ -226,7 +225,7 @@ public class MainProcess {
             System.out.println();
             int exact = accountList.passwordCorrection(index, password);
             if (exact == 1) {
-                accountList.getHistory(index);
+                accountList.getHistory(accountNum);
                 break;
             } else {
                 System.out.println("비밀번호가 일치하지 않습니다.");

@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
-        MainProcess mainProcess = new MainProcess();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {

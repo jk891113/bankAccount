@@ -65,9 +65,10 @@ public class AccountList {
     }
 
     public void deleteAccount(int index) {
+        transInfoList.deleteTransInfo((accountList.get(index).getAccountNum()));
         accountList.remove(index);
         System.out.println("해당 계좌를 삭제합니다.");
-        transInfoList.deleteTransInfo((accountList.get(index).getAccountNum()));
+
 
         // 삭제 후 인덱스 번호 재정렬
         for (int i = 0; i < accountList.size(); i++) {

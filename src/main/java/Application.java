@@ -1,10 +1,8 @@
 import presentation.MainUI;
-import service.MainProcess;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Main {
+public class Application {
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
         Scanner scanner = new Scanner(System.in);
@@ -17,7 +15,6 @@ public class Main {
                 int chooseMain = Integer.parseInt(sChooseMain);
                 if (chooseMain == 1) {
                     mainUI.createAccount();
-
                 } else if (chooseMain == 2) {
                     mainUI.manageAccount();
                 } else if (chooseMain == 3) {

@@ -19,110 +19,110 @@ public class MainUI {
         System.out.println("------------------------------");
     }
 
-    public void createAccount() {
-        System.out.println("------------------------------");
-        System.out.println("      계좌 정보를 입력하세요");
-        System.out.println("------------------------------");
-        System.out.println("------------------------------");
-        mainProcess.createProcess();
-        System.out.println("------------------------------");
-    }
-
-    public void manageAccount() {
-        System.out.println("------------------------------");
-        System.out.println("         1. 계좌 수정");
-        System.out.println("         2. 계좌 삭제");
-        System.out.println("------------------------------");
-        System.out.print("번호 입력 : ");
-        int chooseMenu = scanner.nextInt();
-        System.out.println();
-        if (chooseMenu == 1) {
-            System.out.println("------------------------------");
-            mainProcess.editProcess();
-            System.out.println("------------------------------");
-        } else if (chooseMenu == 2) {
-            System.out.println("------------------------------");
-            mainProcess.deleteProcess();
-            System.out.println("------------------------------");
-        } else {
-            System.out.println("잘못된 명령어입니다.");
-        }
-    }
-
-    public void checkAccount() {
-        System.out.println("------------------------------");
-        System.out.println("       1. 계좌번호로 조회");
-        System.out.println("       2. 예금주명으로 조회");
-        System.out.println("       3. 계좌목록 조회");
-        System.out.println("       4. 거래내역 조회");
-        System.out.println("------------------------------");
-        System.out.print("번호 입력 : ");
-        int chooseLookup = scanner.nextInt();
-        switch (chooseLookup) {
-            case 1:
-                System.out.println("------------------------------");
-                System.out.println("         계좌번호 입력");
-                System.out.println("------------------------------");
-                mainProcess.checkByAccountNumProcess();
-                System.out.println("------------------------------");
-                break;
-            case 2:
-                System.out.println("------------------------------");
-                System.out.println("          예금주명 입력");
-                System.out.println("------------------------------");
-                mainProcess.checkByNameProcess();
-                System.out.println("------------------------------");
-                break;
-            case 3:
-                System.out.println("------------------------------");
-                System.out.println("           계좌목록");
-                System.out.println("------------------------------");
-                mainProcess.accountListProcess();
-                System.out.println("------------------------------");
-                break;
-            case 4:
-                System.out.println("------------------------------");
-                System.out.println("           거래내역");
-                System.out.println("------------------------------");
-                mainProcess.historyProcess();
-                System.out.println("------------------------------");
-                break;
-            default:
-                System.out.println("목록에 해당하는 숫자를 눌러주세요.");
-        }
-    }
-
-    public void depositWithdrawal() {
-        System.out.println("------------------------------");
-        System.out.println("           1. 입금");
-        System.out.println("           2. 출금");
-        System.out.println("           3. 송금");
-        System.out.println("------------------------------");
-        System.out.print("번호 입력 : ");
-        int chooseMenu = scanner.nextInt();
-        if (chooseMenu == 1) {
-            System.out.println("------------------------------");
-            mainProcess.depositProcess();
-            System.out.println("------------------------------");
-        } else if (chooseMenu == 2) {
-            System.out.println("------------------------------");
-            mainProcess.withdrawalProcess();
-            System.out.println("------------------------------");
-        } else if (chooseMenu == 3) {
-            System.out.println("------------------------------");
-            mainProcess.remittanceProcess();
-            System.out.println("------------------------------");
-        } else {
-            System.out.println("잘못된 명령어입니다.");
-        }
-    }
-
-    public void checkAmount() {
-        System.out.println("------------------------------");
-        System.out.println("       계좌번호를 입력하세요.");
-        System.out.println("------------------------------");
-        System.out.println("------------------------------");
-        mainProcess.getAmountProcess();
-        System.out.println("------------------------------");
-    }
+//    public void createAccount() {
+//        System.out.println("------------------------------");
+//        System.out.println("      계좌 정보를 입력하세요");
+//        System.out.println("------------------------------");
+//        System.out.println("------------------------------");
+//        mainProcess.createProcess();
+//        System.out.println("------------------------------");
+//    }
+//
+//    public void manageAccount() {
+//        System.out.println("------------------------------");
+//        System.out.println("         1. 계좌 수정");
+//        System.out.println("         2. 계좌 삭제");
+//        System.out.println("------------------------------");
+//        System.out.print("번호 입력 : ");
+//        int chooseMenu = scanner.nextInt();
+//        System.out.println();
+//        if (chooseMenu == 1) {
+//            System.out.println("------------------------------");
+//            mainProcess.editProcess();
+//            System.out.println("------------------------------");
+//        } else if (chooseMenu == 2) {
+//            System.out.println("------------------------------");
+//            mainProcess.deleteProcess();
+//            System.out.println("------------------------------");
+//        } else {
+//            System.out.println("잘못된 명령어입니다.");
+//        }
+//    }
+//
+//    public void checkAccount() {
+//        System.out.println("------------------------------");
+//        System.out.println("       1. 계좌번호로 조회");
+//        System.out.println("       2. 예금주명으로 조회");
+//        System.out.println("       3. 계좌목록 조회");
+//        System.out.println("       4. 거래내역 조회");
+//        System.out.println("------------------------------");
+//        System.out.print("번호 입력 : ");
+//        int chooseLookup = scanner.nextInt();
+//        switch (chooseLookup) {
+//            case 1:
+//                System.out.println("------------------------------");
+//                System.out.println("         계좌번호 입력");
+//                System.out.println("------------------------------");
+//                mainProcess.checkByAccountNumProcess();
+//                System.out.println("------------------------------");
+//                break;
+//            case 2:
+//                System.out.println("------------------------------");
+//                System.out.println("          예금주명 입력");
+//                System.out.println("------------------------------");
+//                mainProcess.checkByNameProcess();
+//                System.out.println("------------------------------");
+//                break;
+//            case 3:
+//                System.out.println("------------------------------");
+//                System.out.println("           계좌목록");
+//                System.out.println("------------------------------");
+//                mainProcess.accountListProcess();
+//                System.out.println("------------------------------");
+//                break;
+//            case 4:
+//                System.out.println("------------------------------");
+//                System.out.println("           거래내역");
+//                System.out.println("------------------------------");
+//                mainProcess.historyProcess();
+//                System.out.println("------------------------------");
+//                break;
+//            default:
+//                System.out.println("목록에 해당하는 숫자를 눌러주세요.");
+//        }
+//    }
+//
+//    public void depositWithdrawal() {
+//        System.out.println("------------------------------");
+//        System.out.println("           1. 입금");
+//        System.out.println("           2. 출금");
+//        System.out.println("           3. 송금");
+//        System.out.println("------------------------------");
+//        System.out.print("번호 입력 : ");
+//        int chooseMenu = scanner.nextInt();
+//        if (chooseMenu == 1) {
+//            System.out.println("------------------------------");
+//            mainProcess.depositProcess();
+//            System.out.println("------------------------------");
+//        } else if (chooseMenu == 2) {
+//            System.out.println("------------------------------");
+//            mainProcess.withdrawalProcess();
+//            System.out.println("------------------------------");
+//        } else if (chooseMenu == 3) {
+//            System.out.println("------------------------------");
+//            mainProcess.remittanceProcess();
+//            System.out.println("------------------------------");
+//        } else {
+//            System.out.println("잘못된 명령어입니다.");
+//        }
+//    }
+//
+//    public void checkAmount() {
+//        System.out.println("------------------------------");
+//        System.out.println("       계좌번호를 입력하세요.");
+//        System.out.println("------------------------------");
+//        System.out.println("------------------------------");
+//        mainProcess.getAmountProcess();
+//        System.out.println("------------------------------");
+//    }
 }

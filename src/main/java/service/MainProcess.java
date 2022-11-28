@@ -21,7 +21,7 @@ public class MainProcess {
         // 계좌번호 입력
         String accountNum;
         while (true) {
-            System.out.println("계좌번호 형식에 맞게 작성하세요. (ex. 000-0000-0000)");
+            System.out.println("계좌번호 형식에 맞게 작성하세요. (ex.000-0000-0000)");
             System.out.print("계좌번호 : ");
             accountNum = scanner.nextLine();
             boolean checkNum = Pattern.matches("^\\d{3}-\\d{4}-\\d{4}$", accountNum);

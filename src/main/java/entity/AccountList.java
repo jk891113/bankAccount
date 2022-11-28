@@ -7,8 +7,7 @@ import java.util.List;
 
 public class AccountList {
     private List<Account> accountList = new ArrayList<>();
-    TransInfoList transInfoList = new TransInfoList();
-    // 계좌정보 리스트 생성
+    TransInfoList transInfoList = new TransInfoList();  // 계좌정보 리스트 생성
 
     public void addAccount(String name, String bankName, String accountName, String password, int amount, String date) {
         int index = accountList.size();
@@ -16,13 +15,13 @@ public class AccountList {
     }  // 계좌정보 리스트에 저장
 
     public void showAllAccount() {
-        for (Account accountItem : accountList) {
-            System.out.println("No. : " + accountItem.getIndex());
-            System.out.println("생성일자 : " + accountItem.getDate());
-            System.out.println("예금주 : " + accountItem.getName());
-            System.out.println("은행명 : " + accountItem.getBankName());
-            System.out.println("계좌번호 : " + accountItem.getAccountNum());
-            System.out.println("잔고 : " + accountItem.getAmount());
+        for (Account account : accountList) {
+            System.out.println("No. : " + account.getIndex());
+            System.out.println("생성일자 : " + account.getDate());
+            System.out.println("예금주 : " + account.getName());
+            System.out.println("은행명 : " + account.getBankName());
+            System.out.println("계좌번호 : " + account.getAccountNum());
+            System.out.println("잔고 : " + account.getAmount());
             System.out.println();
         }
     }
@@ -89,8 +88,8 @@ public class AccountList {
     }
 
     public void getHistory(String accountNum) {
-            transInfoList.showAllTransInfoList(accountNum);
-        }
+        transInfoList.showAllTransInfoList(accountNum);
+    }
 
     public void deposit(int index, int money) {
         Account target = accountList.get(index);

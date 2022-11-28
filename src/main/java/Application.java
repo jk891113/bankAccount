@@ -1,10 +1,15 @@
-import presentation.MainUI;
+import presentation.*;
 
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         MainUI mainUI = new MainUI();
+        CreateAccountUI createAccountUI = new CreateAccountUI();
+        ManageAccountUI manageAccountUI = new ManageAccountUI();
+        CheckAccountUI checkAccountUI = new CheckAccountUI();
+        CheckAmountUI checkAmountUI = new CheckAmountUI();
+        DepositWithdrawalUI depositWithdrawalUI = new DepositWithdrawalUI();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -14,15 +19,15 @@ public class Application {
                 String sChooseMain = scanner.nextLine();
                 int chooseMain = Integer.parseInt(sChooseMain);
                 if (chooseMain == 1) {
-                    mainUI.createAccount();
+                    createAccountUI.createAccount();
                 } else if (chooseMain == 2) {
-                    mainUI.manageAccount();
+                    manageAccountUI.manageAccount();
                 } else if (chooseMain == 3) {
-                    mainUI.checkAccount();
+                    checkAccountUI.checkAccount();
                 } else if (chooseMain == 4) {
-                    mainUI.checkAmount();
+                    checkAmountUI.checkAmount();
                 } else if (chooseMain == 5) {
-                    mainUI.depositWithdrawal();
+                    depositWithdrawalUI.depositWithdrawal();
                 } else if (chooseMain == 0) {
                     System.out.println("프로그램을 종료합니다.");
                     System.exit(0);

@@ -11,13 +11,8 @@ public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     //계좌 정보를 가지고있는 리스트
     AccountList accountList = new AccountList();
-
-<<<<<<< HEAD
-    public void createAccountProcess() {
-=======
     //계좌 생성 기능
-    public void createProcess() {
->>>>>>> b335cad6a8acb9c0b9a9a6bdca1d4a24b1fa4b82
+    public void createAccountProcess() {
         // 이름 입력
         System.out.print("예금주 : ");
         String name = scanner.nextLine();
@@ -71,13 +66,8 @@ public class MainProcess {
         accountList.addAccount(name, bankName, accountNum, password, nAmount, date);
         accountList.showAllAccount();
     }
-
-<<<<<<< HEAD
+        //계좌 수정 기능
     public void editAccountProcess() {
-=======
-    //계좌 수정 기능
-    public void editProcess() {
->>>>>>> b335cad6a8acb9c0b9a9a6bdca1d4a24b1fa4b82
         int index;
         // 계좌번호 입력 후 AccountList에서 입력한 계좌번호의 계좌정보 리스트의 인덱스를 받는다.
         while (true) {
@@ -122,13 +112,8 @@ public class MainProcess {
             }
         }
     }
-
-<<<<<<< HEAD
+            //계좌 삭제 기능
     public void deleteAccountProcess() {
-=======
-    //계좌 삭제 기능
-    public void deleteProcess() {
->>>>>>> b335cad6a8acb9c0b9a9a6bdca1d4a24b1fa4b82
         String accountNum;
         int index;
         while (true) {

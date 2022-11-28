@@ -211,7 +211,7 @@ public class MainProcess {
                 break;
             }
         }
-        int nAmount =0;
+        int nAmount;
         while (true) {
             System.out.print("비밀번호 : ");
             String password = scanner.nextLine();
@@ -270,6 +270,58 @@ public class MainProcess {
                     String money = scanner.nextLine();
                     nAmount = Integer.parseInt(money);
                     accountList.withdrawal(index, nAmount);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println("금액 입력이 올바르지 않습니다.");
+                }
+            }
+            break;
+        }
+    }
+
+    public void remittanceProcess() {
+        int index;
+        while (true) {
+            System.out.print("계좌번호 : ");
+            String accountNum = scanner.nextLine();
+            System.out.println();
+            index = accountList.getIndexByAccountNum(accountNum);
+            if (index == -1) {
+                System.out.println("계좌번호를 찾을 수 없습니다.");
+            } else {
+                accountList.getAccount(index);
+                break;
+            }
+        }
+        int nAmount;
+        String receiveAccountNum;
+        while (true) {
+            System.out.print("비밀번호 : ");
+            String password = scanner.nextLine();
+            System.out.println();
+            int exact = accountList.passwordCorrection(index, password);
+            if (exact !=1) {
+                System.out.println("비밀번호가 일치하지 않습니다.");
+                continue;
+            }
+            int receiveIndex;
+            while (true){
+                System.out.println("송금할 계좌번호를 입력하세요.");
+                System.out.print("계좌번호 : ");
+                receiveAccountNum = scanner.nextLine();
+                receiveIndex = accountList.getIndexByAccountNum(receiveAccountNum);
+                if (receiveIndex == -1) {
+                    System.out.println("계좌번호를 찾을 수 없습니다.");
+                } else {
+                    accountList.getAccount(receiveIndex);
+                }
+                System.out.println("송금할 금액을 입력하세요.");
+                System.out.print("금액 : ");
+                try {
+                    String money = scanner.nextLine();
+                    nAmount = Integer.parseInt(money);
+                    accountList.withdrawal(index, nAmount);
+                    accountList.deposit(receiveIndex, nAmount);
                     break;
                 } catch (NumberFormatException e) {
                     System.out.println("금액 입력이 올바르지 않습니다.");

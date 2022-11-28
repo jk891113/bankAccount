@@ -17,6 +17,7 @@ public class Main {
                 int chooseMain = Integer.parseInt(sChooseMain);
                 if (chooseMain == 1) {
                     mainUI.createAccount();
+
                 } else if (chooseMain == 2) {
                     mainUI.manageAccount();
                 } else if (chooseMain == 3) {

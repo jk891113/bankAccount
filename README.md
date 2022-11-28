@@ -5,6 +5,7 @@
 ### 은행관리 프로그램을 자바 콘솔로 구현하는 프로젝트
 <br>
 
+[![My Skills](https://skillicons.dev/icons?i=java,idea,git,github,figma,&perline=5)](https://skillicons.dev)
 ---
 
 ## 1. 설명

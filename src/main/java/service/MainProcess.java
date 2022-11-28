@@ -172,6 +172,7 @@ public class MainProcess {
         String accountNum;
         int index;
         while (true) {
+            System.out.println("거래내역을 조회할 계좌번호를 입력하세요.");
             System.out.print("계좌번호 : ");
             accountNum = scanner.nextLine();
             System.out.println();
@@ -200,6 +201,7 @@ public class MainProcess {
     public void depositProcess() {
         int index;
         while (true) {
+            System.out.println("입금할 계좌번호를 입력하세요.");
             System.out.print("계좌번호 : ");
             String accountNum = scanner.nextLine();
             System.out.println();
@@ -241,6 +243,7 @@ public class MainProcess {
     public void withdrawalProcess() {
         int index;
         while (true) {
+            System.out.println("출금할 계좌번호를 입력하세요.");
             System.out.print("계좌번호 : ");
             String accountNum = scanner.nextLine();
             System.out.println();
@@ -306,7 +309,7 @@ public class MainProcess {
             }
             int receiveIndex;
             while (true){
-                System.out.println("송금할 계좌번호를 입력하세요.");
+                System.out.println("받으실 분의 계좌번호를 입력하세요.");
                 System.out.print("계좌번호 : ");
                 receiveAccountNum = scanner.nextLine();
                 receiveIndex = accountList.getIndexByAccountNum(receiveAccountNum);

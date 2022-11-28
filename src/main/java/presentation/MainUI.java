@@ -1,12 +1,6 @@
 package presentation;
 
-import service.MainProcess;
-
-import java.util.Scanner;
-
 public class MainUI {
-    MainProcess mainProcess = new MainProcess();
-    Scanner scanner = new Scanner(System.in);
 
     public void run() {
         System.out.println("------------------------------");

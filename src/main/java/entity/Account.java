@@ -4,10 +4,10 @@ public class Account {
     private int index;
     private String name;
     private String bankName;
-    private String accountNum;
+    private final String accountNum;
     private String password;
     int amount;
-    private String date;
+    private final String date;
 
     public Account(int index, String name, String bankName, String accountNum, String password, int amount, String date) {
         this.index = index;

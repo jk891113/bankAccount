@@ -11,7 +11,7 @@ public class MainProcess {
     Scanner scanner = new Scanner(System.in);
     AccountList accountList = new AccountList();
 
-    public void createProcess() {
+    public void createAccountProcess() {
         // 이름 입력
         System.out.print("예금주 : ");
         String name = scanner.nextLine();
@@ -63,7 +63,7 @@ public class MainProcess {
         accountList.showAllAccount();
     }
 
-    public void editProcess() {
+    public void editAccountProcess() {
         int index;
         // 계좌번호 입력 후 AccountList에서 입력한 계좌번호의 계좌정보 리스트의 인덱스를 받는다.
         while (true) {
@@ -106,7 +106,7 @@ public class MainProcess {
         }
     }
 
-    public void deleteProcess() {
+    public void deleteAccountProcess() {
         String accountNum;
         int index;
         while (true) {
@@ -164,11 +164,11 @@ public class MainProcess {
         }
     }
 
-    public void accountListProcess() {
+    public void getAllAccountListProcess() {
         accountList.showAllAccount();
     }
 
-    public void historyProcess() {
+    public void getTransInfoHistoryProcess() {
         String accountNum;
         int index;
         while (true) {

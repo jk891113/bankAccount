@@ -48,7 +48,7 @@ public class Application {
             //계좌 등록
             if (chooseMain.equals("1")) {
                 createAccountUI.createAccount();
-                mainProcess.createProcess();
+                mainProcess.createAccountProcess();
                 //계좌 관리 (계좌 수정, 삭제)
             } else if (chooseMain.equals("2")) {
                 manageAccountUI.manageAccount();
@@ -57,11 +57,11 @@ public class Application {
                 System.out.println();
                 if (chooseMenu.equals("1")) {
                     System.out.println("------------------------------");
-                    mainProcess.editProcess();
+                    mainProcess.editAccountProcess();
                     System.out.println("------------------------------");
                 } else if (chooseMenu.equals("2")) {
                     System.out.println("------------------------------");
-                    mainProcess.deleteProcess();
+                    mainProcess.deleteAccountProcess();
                     System.out.println("------------------------------");
                 } else {
                     // 0~5 숫자 외의 숫자입력시 알림
@@ -83,11 +83,11 @@ public class Application {
                         break;
                     case "3":
                         checkAccountUI.checkAllAccounts();
-                        mainProcess.accountListProcess();
+                        mainProcess.getAllAccountListProcess();
                         break;
                     case "4":
                         checkAccountUI.checkTransInfo();
-                        mainProcess.historyProcess();
+                        mainProcess.getTransInfoHistoryProcess();
                         break;
                     default:
                         System.out.println("목록에 해당하는 숫자를 눌러주세요.");

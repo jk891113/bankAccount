@@ -2,7 +2,7 @@ package presentation;
 
 import service.MainProcess;
 
-public class createUI {
+public class CreateUI {
     MainProcess mainProcess = new MainProcess();
     public void createAccount() {
         System.out.println("------------------------------");

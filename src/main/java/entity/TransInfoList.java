@@ -23,7 +23,6 @@ public class TransInfoList {
     }
     // 전체 계좌 내역 조회
     public void showAllTransInfoList(String accountNum) {
-        
         for (TransInfo transInfo : transInfoList) {
             if (accountNum.equals(transInfo.getAccountNum())) {
                 System.out.println("계좌번호 : " + transInfo.getAccountNum());

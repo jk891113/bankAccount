@@ -6,6 +6,9 @@
 <br>
 
 [![My Skills](https://skillicons.dev/icons?i=java,idea,git,github,figma,&perline=5)](https://skillicons.dev)
+
+### 발표자료 : https://www.notion.so/10-7926fd3c7f2445fe90ab223ef79183a3
+
 ---
 
 ## 1. 설명
